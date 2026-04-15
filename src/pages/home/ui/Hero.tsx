@@ -1,4 +1,4 @@
-import heroPhoto from "../assets/hero-photo.png";
+import heroPhoto from "../../../shared/assets/hero-photo.png";
 import styled, { keyframes } from "styled-components";
 
 export default function Hero() {
