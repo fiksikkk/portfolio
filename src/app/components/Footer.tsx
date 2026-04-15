@@ -1,28 +1,76 @@
+import styled from "styled-components";
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-16 px-8 bg-white border-t border-[#2B2B2B]/[0.06]">
-      <div className="max-w-[1200px] mx-auto">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="flex items-center gap-3">
-            <div
-              className="text-[20px] tracking-tight"
-              style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
-            >
-              YV.
-            </div>
-            <div className="w-1 h-1 rounded-full bg-[#C8A97E]" />
-            <div className="text-[14px] text-[#6F6B63]">
-              Fullstack Developer
-            </div>
-          </div>
+    <FooterContainer>
+      <Container>
+        <Content>
+          <LogoSection>
+            <Logo>YV.</Logo>
+            <Dot />
+            <Title>Fullstack Developer</Title>
+          </LogoSection>
 
-          <div className="text-[14px] text-[#6F6B63]">
+          <Copyright>
             © {currentYear} Yakov Varenik. Crafted with care.
-          </div>
-        </div>
-      </div>
-    </footer>
+          </Copyright>
+        </Content>
+      </Container>
+    </FooterContainer>
   );
 }
+
+const FooterContainer = styled.footer`
+  padding: 4rem 2rem;
+  background-color: #ffffff;
+  border-top: 1px solid rgba(43, 43, 43, 0.06);
+`;
+
+const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+`;
+
+const LogoSection = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+`;
+
+const Logo = styled.div`
+  font-size: 20px;
+  letter-spacing: -0.025em;
+  font-family: var(--font-display);
+  font-weight: 600;
+`;
+
+const Dot = styled.div`
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #c8a97e;
+`;
+
+const Title = styled.div`
+  font-size: 14px;
+  color: #6f6b63;
+`;
+
+const Copyright = styled.div`
+  font-size: 14px;
+  color: #6f6b63;
+`;

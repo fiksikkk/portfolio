@@ -1,27 +1,60 @@
+import styled from "styled-components";
+
 export default function About() {
   return (
-    <section id="about" className="py-32 px-8">
-      <div className="max-w-[1200px] mx-auto">
-        <div className="max-w-[800px] mx-auto">
-          <h2
-            className="text-[14px] uppercase tracking-[0.15em] text-[#C8A97E] mb-6"
-            style={{ fontFamily: 'var(--font-display)', fontWeight: 600 }}
-          >
-            About
-          </h2>
+    <Section id="about">
+      <Container>
+        <Content>
+          <Subtitle>About</Subtitle>
 
-          <p className="text-[21px] leading-[1.7] text-[#2B2B2B]">
-            I'm a fullstack developer specializing in building high-performance mobile and web applications.
-            With deep expertise in React Native and modern backend technologies, I create seamless user experiences
+          <Description>
+            I'm a fullstack developer specializing in building high-performance
+            mobile and web applications. With deep expertise in React Native and
+            modern backend technologies, I create seamless user experiences
             backed by robust, scalable architecture.
-          </p>
+          </Description>
 
-          <p className="text-[21px] leading-[1.7] text-[#2B2B2B] mt-8">
-            I leverage AI tools to accelerate development workflows, automate repetitive tasks, and enhance
-            code quality — allowing me to focus on solving complex problems and delivering exceptional results.
-          </p>
-        </div>
-      </div>
-    </section>
+          <Description>
+            I leverage AI tools to accelerate development workflows, automate
+            repetitive tasks, and enhance code quality — allowing me to focus on
+            solving complex problems and delivering exceptional results.
+          </Description>
+        </Content>
+      </Container>
+    </Section>
   );
 }
+
+const Section = styled.section`
+  padding: 8rem 2rem;
+`;
+
+const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
+const Content = styled.div`
+  max-width: 800px;
+  margin: 0 auto;
+`;
+
+const Subtitle = styled.h2`
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #c8a97e;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+`;
+
+const Description = styled.p`
+  font-size: 21px;
+  line-height: 1.7;
+  color: #2b2b2b;
+
+  &:not(:first-of-type) {
+    margin-top: 2rem;
+  }
+`;

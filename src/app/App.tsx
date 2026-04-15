@@ -1,13 +1,14 @@
-import { useState, useEffect } from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import About from './components/About';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import AISection from './components/AISection';
-import Personal from './components/Personal';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import { useState, useEffect } from "react";
+import styled from "styled-components";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Skills from "./components/Skills";
+import Projects from "./components/Projects";
+import AISection from "./components/AISection";
+import Personal from "./components/Personal";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
@@ -17,15 +18,15 @@ export default function App() {
       setScrolled(window.scrollY > 20);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div className="min-h-screen" style={{ scrollBehavior: 'smooth' }}>
+    <AppContainer>
       <Header scrolled={scrolled} />
 
-      <main>
+      <Main>
         <Hero />
         <About />
         <Skills />
@@ -33,9 +34,16 @@ export default function App() {
         <AISection />
         <Personal />
         <Contact />
-      </main>
+      </Main>
 
       <Footer />
-    </div>
+    </AppContainer>
   );
 }
+
+const AppContainer = styled.div`
+  min-height: 100vh;
+  scroll-behavior: smooth;
+`;
+
+const Main = styled.main``;

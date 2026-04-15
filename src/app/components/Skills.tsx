@@ -1,15 +1,12 @@
+import styled from "styled-components";
+
 export default function Skills() {
   const skillCategories = [
     {
       title: "Frontend",
       skills: ["React", "React Native", "TypeScript"],
       icon: (
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -23,12 +20,7 @@ export default function Skills() {
       title: "Backend",
       skills: ["Node.js", "Nest.js", "GraphQL"],
       icon: (
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -42,12 +34,7 @@ export default function Skills() {
       title: "State & Data",
       skills: ["Redux", "Effector", "REST APIs"],
       icon: (
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -61,12 +48,7 @@ export default function Skills() {
       title: "Testing",
       skills: ["Jest", "Detox", "Unit & E2E"],
       icon: (
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -80,12 +62,7 @@ export default function Skills() {
       title: "Dev Tools",
       skills: ["Sentry", "CI/CD", "Git"],
       icon: (
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -105,12 +82,7 @@ export default function Skills() {
       title: "Architecture",
       skills: ["Clean Code", "Design Patterns", "Feature Sliced Design"],
       icon: (
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -123,46 +95,126 @@ export default function Skills() {
   ];
 
   return (
-    <section className="py-32 px-8 bg-white">
-      <div className="max-w-[1200px] mx-auto">
-        <h2
-          className="text-[14px] uppercase tracking-[0.15em] text-[#C8A97E] mb-12"
-          style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
-        >
-          Skills & Expertise
-        </h2>
+    <Section>
+      <Container>
+        <Title>Skills & Expertise</Title>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <Grid>
           {skillCategories.map((category, index) => (
-            <div
+            <Card
               key={category.title}
-              className="group p-8 bg-[#F5F1E8] rounded-[24px] hover:bg-white hover:shadow-[0_8px_32px_rgba(43,43,43,0.08)] transition-all duration-500 hover:-translate-y-1"
               style={{
                 animationDelay: `${index * 100}ms`,
               }}
             >
-              <div className="w-12 h-12 rounded-[16px] bg-white group-hover:bg-[#C8A97E] text-[#C8A97E] group-hover:text-white flex items-center justify-center mb-6 transition-all duration-500 shadow-[0_2px_8px_rgba(43,43,43,0.06)]">
-                {category.icon}
-              </div>
+              <IconContainer>{category.icon}</IconContainer>
 
-              <h3
-                className="text-[20px] mb-4"
-                style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
-              >
-                {category.title}
-              </h3>
+              <CardTitle>{category.title}</CardTitle>
 
-              <ul className="space-y-2">
+              <SkillList>
                 {category.skills.map((skill) => (
-                  <li key={skill} className="text-[15px] text-[#6F6B63]">
-                    {skill}
-                  </li>
+                  <SkillItem key={skill}>{skill}</SkillItem>
                 ))}
-              </ul>
-            </div>
+              </SkillList>
+            </Card>
           ))}
-        </div>
-      </div>
-    </section>
+        </Grid>
+      </Container>
+    </Section>
   );
 }
+
+const Section = styled.section`
+  padding: 128px 32px;
+  background: #ffffff;
+`;
+
+const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
+const Title = styled.h2`
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #c8a97e;
+  margin: 0 0 48px 0;
+`;
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+`;
+
+const Card = styled.div`
+  padding: 32px;
+  background: #f5f1e8;
+  border-radius: 24px;
+  transition: all 0.5s ease;
+  cursor: pointer;
+
+  &:hover {
+    background: #ffffff;
+    box-shadow: 0 8px 32px rgba(43, 43, 43, 0.08);
+    transform: translateY(-4px);
+  }
+`;
+
+const IconContainer = styled.div`
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: #ffffff;
+  color: #c8a97e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  transition: all 0.5s ease;
+  box-shadow: 0 2px 8px rgba(43, 43, 43, 0.06);
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  ${Card}:hover & {
+    background: #c8a97e;
+    color: #ffffff;
+  }
+`;
+
+const CardTitle = styled.h3`
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 20px;
+  margin: 0 0 16px 0;
+`;
+
+const SkillList = styled.ul`
+  margin: 0;
+  padding: 0;
+  list-style: none;
+`;
+
+const SkillItem = styled.li`
+  font-size: 15px;
+  color: #6f6b63;
+  margin-bottom: 8px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;

@@ -1,73 +1,188 @@
+import styled from "styled-components";
+
 export default function AISection() {
   const aiCapabilities = [
     {
-      title: 'Code Generation',
-      description: 'Accelerate development with AI-assisted code generation and boilerplate reduction'
+      title: "Code Generation",
+      description:
+        "Accelerate development with AI-assisted code generation and boilerplate reduction",
     },
     {
-      title: 'Automation',
-      description: 'Streamline workflows through intelligent automation and tooling'
+      title: "Automation",
+      description:
+        "Streamline workflows through intelligent automation and tooling",
     },
     {
-      title: 'Code Review',
-      description: 'Enhance code quality with AI-powered analysis and suggestions'
-    }
+      title: "Code Review",
+      description:
+        "Enhance code quality with AI-powered analysis and suggestions",
+    },
   ];
 
   return (
-    <section className="py-32 px-8 bg-gradient-to-br from-[#C8A97E]/8 via-[#F5F1E8] to-transparent relative overflow-hidden">
-      {/* Decorative background elements */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-[#C8A97E]/10 rounded-full blur-3xl -translate-x-48 -translate-y-48" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#C8A97E]/10 rounded-full blur-3xl translate-x-48 translate-y-48" />
+    <Section>
+      <DecorativeCircle1 />
+      <DecorativeCircle2 />
 
-      <div className="max-w-[1200px] mx-auto relative">
-        <div className="max-w-[800px] mx-auto text-center mb-16">
-          <h2
-            className="text-[14px] uppercase tracking-[0.15em] text-[#C8A97E] mb-6"
-            style={{ fontFamily: 'var(--font-display)', fontWeight: 600 }}
-          >
-            AI-Enhanced Development
-          </h2>
+      <Container>
+        <HeaderSection>
+          <Subtitle>AI-Enhanced Development</Subtitle>
+          <Title>Building smarter, faster</Title>
+          <Description>
+            I integrate AI tools throughout the development process to enhance
+            productivity, improve code quality, and solve complex problems more
+            efficiently. This allows me to deliver exceptional results while
+            maintaining high standards of craftsmanship.
+          </Description>
+        </HeaderSection>
 
-          <h3
-            className="text-[40px] leading-[1.2] mb-6"
-            style={{ fontFamily: 'var(--font-display)', fontWeight: 600 }}
-          >
-            Building smarter, faster
-          </h3>
-
-          <p className="text-[19px] text-[#6F6B63] leading-relaxed">
-            I integrate AI tools throughout the development process to enhance productivity,
-            improve code quality, and solve complex problems more efficiently. This allows me to
-            deliver exceptional results while maintaining high standards of craftsmanship.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <CapabilitiesGrid>
           {aiCapabilities.map((capability, index) => (
-            <div
+            <CapabilityCard
               key={capability.title}
-              className="bg-white/60 backdrop-blur-sm rounded-[24px] p-8 hover:bg-white hover:shadow-[0_8px_32px_rgba(200,169,126,0.15)] transition-all duration-500"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="w-10 h-10 rounded-[12px] bg-[#C8A97E]/10 flex items-center justify-center mb-5">
-                <div className="w-2 h-2 rounded-full bg-[#C8A97E]" />
-              </div>
+              <IconContainer>
+                <IconDot />
+              </IconContainer>
 
-              <h4
-                className="text-[18px] mb-3"
-                style={{ fontFamily: 'var(--font-display)', fontWeight: 600 }}
-              >
-                {capability.title}
-              </h4>
+              <CapabilityTitle>{capability.title}</CapabilityTitle>
 
-              <p className="text-[15px] text-[#6F6B63] leading-relaxed">
+              <CapabilityDescription>
                 {capability.description}
-              </p>
-            </div>
+              </CapabilityDescription>
+            </CapabilityCard>
           ))}
-        </div>
-      </div>
-    </section>
+        </CapabilitiesGrid>
+      </Container>
+    </Section>
   );
 }
+
+const Section = styled.section`
+  padding: 128px 32px;
+  background: linear-gradient(
+    225deg,
+    rgba(200, 169, 126, 0.08),
+    #f5f1e8,
+    transparent
+  );
+  position: relative;
+  overflow: hidden;
+`;
+
+const DecorativeCircle1 = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 384px;
+  height: 384px;
+  background: rgba(200, 169, 126, 0.1);
+  border-radius: 50%;
+  filter: blur(96px);
+  transform: translate(-192px, -192px);
+`;
+
+const DecorativeCircle2 = styled.div`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 384px;
+  height: 384px;
+  background: rgba(200, 169, 126, 0.1);
+  border-radius: 50%;
+  filter: blur(96px);
+  transform: translate(192px, 192px);
+`;
+
+const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+`;
+
+const HeaderSection = styled.div`
+  max-width: 800px;
+  margin: 0 auto 64px;
+  text-align: center;
+`;
+
+const Subtitle = styled.h2`
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #c8a97e;
+  margin: 0 0 24px 0;
+`;
+
+const Title = styled.h3`
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 1.2;
+  margin: 0 0 24px 0;
+`;
+
+const Description = styled.p`
+  font-size: 19px;
+  color: #6f6b63;
+  line-height: 1.75;
+  margin: 0;
+`;
+
+const CapabilitiesGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+`;
+
+const CapabilityCard = styled.div`
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  border-radius: 24px;
+  padding: 32px;
+  transition: all 0.5s ease;
+
+  &:hover {
+    background: #ffffff;
+    box-shadow: 0 8px 32px rgba(200, 169, 126, 0.15);
+  }
+`;
+
+const IconContainer = styled.div`
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(200, 169, 126, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+`;
+
+const IconDot = styled.div`
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c8a97e;
+`;
+
+const CapabilityTitle = styled.h4`
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 18px;
+  margin: 0 0 12px 0;
+`;
+
+const CapabilityDescription = styled.p`
+  font-size: 15px;
+  color: #6f6b63;
+  line-height: 1.75;
+  margin: 0;
+`;

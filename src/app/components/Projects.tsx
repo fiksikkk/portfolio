@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 export default function Projects() {
   const projects = [
     {
@@ -19,56 +21,32 @@ export default function Projects() {
   ];
 
   return (
-    <section id="projects" className="py-32 px-8">
-      <div className="max-w-[1200px] mx-auto">
-        <div className="mb-16">
-          <h2
-            className="text-[14px] uppercase tracking-[0.15em] text-[#C8A97E] mb-4"
-            style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
-          >
-            Featured Projects
-          </h2>
-          <p className="text-[17px] text-[#6F6B63] max-w-[600px]">
+    <Section id="projects">
+      <Container>
+        <HeaderSection>
+          <Title>Featured Projects</Title>
+          <Description>
             Selected work showcasing expertise in fullstack development, mobile
             architecture, and performance optimization.
-          </p>
-        </div>
+          </Description>
+        </HeaderSection>
 
-        <div className="space-y-8">
+        <ProjectsList>
           {projects.map((project, index) => (
-            <div
-              key={project.name}
-              className="group relative bg-white rounded-[24px] p-12 shadow-[0_2px_16px_rgba(43,43,43,0.06)] hover:shadow-[0_12px_48px_rgba(43,43,43,0.12)] transition-all duration-500 hover:-translate-y-2 overflow-hidden"
-            >
-              {/* Background gradient on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#C8A97E]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <ProjectCard key={project.name}>
+              <GradientBackground />
+              <DecorativeElement />
 
-              {/* Decorative element */}
-              <div className="absolute top-0 right-0 w-48 h-48 bg-[#C8A97E]/5 rounded-full blur-3xl transform translate-x-24 -translate-y-24 group-hover:scale-150 transition-transform duration-700" />
+              <CardContent>
+                <ProjectHeader>
+                  <ProjectInfo>
+                    <HighlightBadge>{project.highlight}</HighlightBadge>
+                    <ProjectName>{project.name}</ProjectName>
+                  </ProjectInfo>
 
-              <div className="relative">
-                <div className="flex items-start justify-between mb-6">
-                  <div>
-                    <div
-                      className="inline-block px-4 py-1.5 bg-[#C8A97E]/10 text-[#C8A97E] rounded-full text-[13px] mb-4"
-                      style={{ fontWeight: 600 }}
-                    >
-                      {project.highlight}
-                    </div>
-                    <h3
-                      className="text-[32px] mb-3"
-                      style={{
-                        fontFamily: "var(--font-display)",
-                        fontWeight: 600,
-                      }}
-                    >
-                      {project.name}
-                    </h3>
-                  </div>
-
-                  <div className="w-12 h-12 rounded-full bg-[#F5F1E8] group-hover:bg-[#C8A97E] flex items-center justify-center transition-all duration-500">
+                  <ArrowIcon>
                     <svg
-                      className="w-5 h-5 text-[#C8A97E] group-hover:text-white transition-colors duration-500"
+                      className="w-5 h-5"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -80,29 +58,187 @@ export default function Projects() {
                         d="M14 5l7 7m0 0l-7 7m7-7H3"
                       />
                     </svg>
-                  </div>
-                </div>
+                  </ArrowIcon>
+                </ProjectHeader>
 
-                <p className="text-[17px] text-[#6F6B63] leading-relaxed mb-8 max-w-[800px]">
-                  {project.description}
-                </p>
+                <ProjectDescription>{project.description}</ProjectDescription>
 
-                <div className="flex flex-wrap gap-3">
+                <TagsList>
                   {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-4 py-2 bg-[#F5F1E8] text-[#2B2B2B] rounded-[12px] text-[14px] hover:bg-[#C8A97E]/10 transition-colors duration-300"
-                      style={{ fontWeight: 500 }}
-                    >
-                      {tag}
-                    </span>
+                    <Tag key={tag}>{tag}</Tag>
                   ))}
-                </div>
-              </div>
-            </div>
+                </TagsList>
+              </CardContent>
+            </ProjectCard>
           ))}
-        </div>
-      </div>
-    </section>
+        </ProjectsList>
+      </Container>
+    </Section>
   );
 }
+
+const Section = styled.section`
+  padding: 128px 32px;
+`;
+
+const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
+const HeaderSection = styled.div`
+  margin-bottom: 64px;
+`;
+
+const Title = styled.h2`
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #c8a97e;
+  margin: 0 0 16px 0;
+`;
+
+const Description = styled.p`
+  font-size: 17px;
+  color: #6f6b63;
+  max-width: 600px;
+  margin: 0;
+`;
+
+const ProjectsList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+`;
+
+const ProjectCard = styled.div`
+  position: relative;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 48px;
+  box-shadow: 0 2px 16px rgba(43, 43, 43, 0.06);
+  transition: all 0.5s ease;
+  overflow: hidden;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 12px 48px rgba(43, 43, 43, 0.12);
+    transform: translateY(-8px);
+  }
+`;
+
+const GradientBackground = styled.div`
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(225deg, rgba(200, 169, 126, 0.05), transparent);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+
+  ${ProjectCard}:hover & {
+    opacity: 1;
+  }
+`;
+
+const DecorativeElement = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 192px;
+  height: 192px;
+  background: rgba(200, 169, 126, 0.05);
+  border-radius: 50%;
+  filter: blur(48px);
+  transform: translate(96px, -96px);
+  transition: transform 0.7s ease;
+
+  ${ProjectCard}:hover & {
+    transform: translate(96px, -96px) scale(2.5);
+  }
+`;
+
+const CardContent = styled.div`
+  position: relative;
+`;
+
+const ProjectHeader = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+`;
+
+const ProjectInfo = styled.div``;
+
+const HighlightBadge = styled.div`
+  display: inline-block;
+  padding: 6px 16px;
+  background: rgba(200, 169, 126, 0.1);
+  color: #c8a97e;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 16px;
+`;
+
+const ProjectName = styled.h3`
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 32px;
+  margin: 0 0 12px 0;
+`;
+
+const ArrowIcon = styled.div`
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #f5f1e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    color: #c8a97e;
+    transition: color 0.5s ease;
+  }
+
+  ${ProjectCard}:hover & {
+    background: #c8a97e;
+
+    svg {
+      color: #ffffff;
+    }
+  }
+`;
+
+const ProjectDescription = styled.p`
+  font-size: 17px;
+  color: #6f6b63;
+  line-height: 1.75;
+  margin: 0 0 32px 0;
+  max-width: 800px;
+`;
+
+const TagsList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+`;
+
+const Tag = styled.span`
+  padding: 8px 16px;
+  background: #f5f1e8;
+  color: #2b2b2b;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background: rgba(200, 169, 126, 0.1);
+  }
+`;

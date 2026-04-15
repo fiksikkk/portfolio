@@ -1,10 +1,12 @@
+import styled from "styled-components";
+
 export default function Contact() {
   const contactMethods = [
     {
       name: "Telegram",
       handle: "@fiksik_k",
       icon: (
-        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+        <svg fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z" />
         </svg>
       ),
@@ -14,12 +16,7 @@ export default function Contact() {
       name: "Email",
       handle: "yakov.varenik@gmail.com",
       icon: (
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -34,7 +31,7 @@ export default function Contact() {
       name: "GitHub",
       handle: "github.com/Fiksikkk",
       icon: (
-        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+        <svg fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
         </svg>
       ),
@@ -43,61 +40,38 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-32 px-8">
-      <div className="max-w-[1200px] mx-auto">
-        <div className="max-w-[700px] mx-auto text-center">
-          <h2
-            className="text-[14px] uppercase tracking-[0.15em] text-[#C8A97E] mb-6"
-            style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
-          >
-            Get in Touch
-          </h2>
+    <Section id="contact">
+      <Container>
+        <Content>
+          <Subtitle>Get in Touch</Subtitle>
 
-          <h3
-            className="text-[40px] leading-[1.2] mb-6"
-            style={{ fontFamily: "var(--font-display)", fontWeight: 600 }}
-          >
-            Let's work together
-          </h3>
+          <Title>Let's work together</Title>
 
-          <p className="text-[19px] text-[#6F6B63] leading-relaxed mb-16">
+          <Description>
             I'm always interested in hearing about new projects and
             opportunities. Whether you have a question or just want to say hi,
             feel free to reach out.
-          </p>
+          </Description>
 
-          <div className="space-y-4">
+          <ContactList>
             {contactMethods.map((method, index) => (
-              <a
+              <ContactLink
                 key={method.name}
                 href={method.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-between p-8 bg-white rounded-[24px] shadow-[0_2px_12px_rgba(43,43,43,0.06)] hover:shadow-[0_8px_32px_rgba(200,169,126,0.2)] hover:bg-[#C8A97E] transition-all duration-500 hover:-translate-y-1"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="flex items-center gap-6">
-                  <div className="w-14 h-14 rounded-[16px] bg-[#F5F1E8] group-hover:bg-white/20 text-[#C8A97E] group-hover:text-white flex items-center justify-center transition-all duration-500">
-                    {method.icon}
-                  </div>
+                <ContactInfo>
+                  <IconContainer>{method.icon}</IconContainer>
 
-                  <div className="text-left">
-                    <div
-                      className="text-[20px] mb-1 text-[#2B2B2B] group-hover:text-white transition-colors duration-500"
-                      style={{
-                        fontFamily: "var(--font-display)",
-                        fontWeight: 600,
-                      }}
-                    >
-                      {method.name}
-                    </div>
-                    <div className="text-[15px] text-[#6F6B63] group-hover:text-white/80 transition-colors duration-500">
-                      {method.handle}
-                    </div>
-                  </div>
-                </div>
+                  <ContactDetails>
+                    <ContactName>{method.name}</ContactName>
+                    <ContactHandle>{method.handle}</ContactHandle>
+                  </ContactDetails>
+                </ContactInfo>
 
-                <div className="w-10 h-10 rounded-full bg-[#F5F1E8] group-hover:bg-white/20 flex items-center justify-center transition-all duration-500 group-hover:translate-x-1">
+                <ArrowContainer>
                   <svg
                     className="w-5 h-5 text-[#C8A97E] group-hover:text-white transition-colors duration-500"
                     fill="none"
@@ -111,12 +85,158 @@ export default function Contact() {
                       d="M14 5l7 7m0 0l-7 7m7-7H3"
                     />
                   </svg>
-                </div>
-              </a>
+                </ArrowContainer>
+              </ContactLink>
             ))}
-          </div>
-        </div>
-      </div>
-    </section>
+          </ContactList>
+        </Content>
+      </Container>
+    </Section>
   );
 }
+
+const Section = styled.section`
+  padding: 8rem 2rem;
+`;
+
+const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+`;
+
+const Content = styled.div`
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+`;
+
+const Subtitle = styled.h2`
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #c8a97e;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+`;
+
+const Title = styled.h3`
+  font-size: 40px;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+`;
+
+const Description = styled.p`
+  font-size: 19px;
+  color: #6f6b63;
+  line-height: 1.625;
+  margin-bottom: 4rem;
+`;
+
+const ContactList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+const ContactLink = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 2px 12px rgba(43, 43, 43, 0.06);
+  transition: all 0.5s;
+  text-decoration: none;
+
+  &:hover {
+    box-shadow: 0 8px 32px rgba(200, 169, 126, 0.2);
+    background-color: #c8a97e;
+    transform: translateY(-4px);
+  }
+`;
+
+const ContactInfo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+`;
+
+const IconContainer = styled.div`
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 16px;
+  background-color: #f5f1e8;
+  color: #c8a97e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  ${ContactLink}:hover & {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+  }
+`;
+
+const ContactDetails = styled.div`
+  text-align: left;
+`;
+
+const ContactName = styled.div`
+  font-size: 20px;
+  margin-bottom: 0.25rem;
+  color: #2b2b2b;
+  font-family: var(--font-display);
+  font-weight: 600;
+  transition: color 0.5s;
+
+  ${ContactLink}:hover & {
+    color: #ffffff;
+  }
+`;
+
+const ContactHandle = styled.div`
+  font-size: 15px;
+  color: #6f6b63;
+  transition: color 0.5s;
+
+  ${ContactLink}:hover & {
+    color: rgba(255, 255, 255, 0.8);
+  }
+`;
+
+const ArrowContainer = styled.div`
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: #f5f1e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s;
+
+  ${ContactLink}:hover & {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(4px);
+  }
+
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #c8a97e;
+    transition: color 0.5s;
+
+    ${ContactLink}:hover & {
+      color: #ffffff;
+    }
+  }
+`;
