@@ -1,7 +1,6 @@
-# Modern Portfolio Landing Page
+# Portfolio Landing Page
 
-This is a modern portfolio landing page developed based on a Figma design. The site is intended to showcase a developer's personal portfolio, skills, and projects.
-
+This is a portfolio landing page. The site is intended to showcase a developer's personal portfolio, skills, and projects.
 
 ## Tech Stack
 
@@ -18,11 +17,13 @@ This is a modern portfolio landing page developed based on a Figma design. The s
 ## Getting Started
 
 1. Install dependencies:
+
    ```bash
    pnpm install
    ```
 
 2. Start the development server:
+
    ```bash
    pnpm run dev
    ```
