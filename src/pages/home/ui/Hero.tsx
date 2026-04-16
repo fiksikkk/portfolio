@@ -1,4 +1,4 @@
-import heroPhoto from "../../../shared/assets/hero-photo.png";
+import heroPhoto from "../../../shared/assets/images/hero-photo.png";
 import styled from "styled-components";
 import {
   AnimatedBlock,

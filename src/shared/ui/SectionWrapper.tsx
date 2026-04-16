@@ -12,26 +12,33 @@ interface SectionWrapperProps {
   background?: SectionBackground;
   id?: string;
   className?: string;
+  ref?: React.ComponentProps<typeof Section>["ref"];
 }
 
-function SectionWrapperComponent(
-  { children, wide = false, background = "transparent", id, className }: SectionWrapperProps,
-  ref: React.ForwardedRef<HTMLElement>,
-) {
-  const SectionComponent = wide ? WideSection : Section;
+export function SectionWrapper({
+  children,
+  wide = false,
+  background = "transparent",
+  id,
+  className,
+  ref,
+}: SectionWrapperProps) {
+  if (wide) {
+    return (
+      <WideSection
+        ref={ref}
+        id={id}
+        className={className}
+        $background={background}
+      >
+        <SectionContainer>{children}</SectionContainer>
+      </WideSection>
+    );
+  }
 
   return (
-    <SectionComponent
-      ref={ref}
-      id={id}
-      className={className}
-      $background={background}
-    >
+    <Section ref={ref} id={id} className={className} $background={background}>
       <SectionContainer>{children}</SectionContainer>
-    </SectionComponent>
+    </Section>
   );
 }
-
-SectionWrapperComponent.displayName = "SectionWrapper";
-
-export const SectionWrapper = React.forwardRef(SectionWrapperComponent);

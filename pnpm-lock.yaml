@@ -12,10 +12,10 @@ importers:
   .:
     dependencies:
       react:
-        specifier: 18.3.1
+        specifier: ^19.2.0
         version: 19.2.5
       react-dom:
-        specifier: 18.3.1
+        specifier: ^19.2.0
         version: 19.2.5(react@19.2.5)
       styled-components:
         specifier: ^6.4.0
