@@ -1,6 +1,12 @@
 import styled from "styled-components";
+import {
+  SectionWrapper,
+  SectionSubtitle,
+  CardBase,
+  IconContainer as IconContainerBase,
+} from "../../../shared/ui";
 
-export default function Skills() {
+export function Skills() {
   const skillCategories = [
     {
       title: "Frontend",
@@ -95,52 +101,34 @@ export default function Skills() {
   ];
 
   return (
-    <Section>
-      <Container>
-        <Title>Skills & Expertise</Title>
+    <SectionWrapper wide background="surface">
+      <Title>Skills & Expertise</Title>
 
-        <Grid>
-          {skillCategories.map((category, index) => (
-            <Card
-              key={category.title}
-              style={{
-                animationDelay: `${index * 100}ms`,
-              }}
-            >
-              <IconContainer>{category.icon}</IconContainer>
+      <Grid>
+        {skillCategories.map((category, index) => (
+          <Card
+            key={category.title}
+            style={{
+              animationDelay: `${index * 100}ms`,
+            }}
+          >
+            <IconContainer>{category.icon}</IconContainer>
 
-              <CardTitle>{category.title}</CardTitle>
+            <CardTitle>{category.title}</CardTitle>
 
-              <SkillList>
-                {category.skills.map((skill) => (
-                  <SkillItem key={skill}>{skill}</SkillItem>
-                ))}
-              </SkillList>
-            </Card>
-          ))}
-        </Grid>
-      </Container>
-    </Section>
+            <SkillList>
+              {category.skills.map((skill) => (
+                <SkillItem key={skill}>{skill}</SkillItem>
+              ))}
+            </SkillList>
+          </Card>
+        ))}
+      </Grid>
+    </SectionWrapper>
   );
 }
 
-const Section = styled.section`
-  padding: 128px 32px;
-  background: #ffffff;
-`;
-
-const Container = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-`;
-
-const Title = styled.h2`
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: #c8a97e;
+const Title = styled(SectionSubtitle)`
   margin: 0 0 48px 0;
 `;
 
@@ -158,11 +146,9 @@ const Grid = styled.div`
   }
 `;
 
-const Card = styled.div`
+const Card = styled(CardBase)`
   padding: 32px;
-  background: #f5f1e8;
   border-radius: 24px;
-  transition: all 0.5s ease;
   cursor: pointer;
 
   &:hover {
@@ -172,7 +158,7 @@ const Card = styled.div`
   }
 `;
 
-const IconContainer = styled.div`
+const IconContainer = styled(IconContainerBase)`
   width: 48px;
   height: 48px;
   border-radius: 16px;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function Footer() {
+export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (

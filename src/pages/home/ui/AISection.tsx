@@ -1,6 +1,13 @@
 import styled from "styled-components";
+import {
+  WideSection as BaseWideSection,
+  SectionContainer as Container,
+  HeaderSection,
+  SectionSubtitle as Subtitle,
+  SectionParagraph as Description,
+} from "../../../shared/ui";
 
-export default function AISection() {
+export function AISection() {
   const aiCapabilities = [
     {
       title: "Code Generation",
@@ -59,8 +66,7 @@ export default function AISection() {
   );
 }
 
-const Section = styled.section`
-  padding: 128px 32px;
+const Section = styled(BaseWideSection)`
   background: linear-gradient(
     225deg,
     rgba(200, 169, 126, 0.08),
@@ -95,41 +101,12 @@ const DecorativeCircle2 = styled.div`
   transform: translate(192px, 192px);
 `;
 
-const Container = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  position: relative;
-`;
-
-const HeaderSection = styled.div`
-  max-width: 800px;
-  margin: 0 auto 64px;
-  text-align: center;
-`;
-
-const Subtitle = styled.h2`
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: #c8a97e;
-  margin: 0 0 24px 0;
-`;
-
 const Title = styled.h3`
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 40px;
   line-height: 1.2;
   margin: 0 0 24px 0;
-`;
-
-const Description = styled.p`
-  font-size: 19px;
-  color: #6f6b63;
-  line-height: 1.75;
-  margin: 0;
 `;
 
 const CapabilitiesGrid = styled.div`

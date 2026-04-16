@@ -4,7 +4,7 @@ interface HeaderProps {
   scrolled: boolean;
 }
 
-export default function Header({ scrolled }: HeaderProps) {
+export function Header({ scrolled }: HeaderProps) {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {

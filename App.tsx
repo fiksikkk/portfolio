@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import Header from "./src/widgets/header";
-import MainPage from "./src/pages/home";
-import Footer from "./src/widgets/footer";
+import { Header } from "./src/widgets/header";
+import { HomePage } from "./src/pages/home";
+import { Footer } from "./src/widgets/footer";
 
-export default function App() {
+export function App() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function App() {
     <AppContainer>
       <Header scrolled={scrolled} />
 
-      <MainPage />
+      <HomePage />
 
       <Footer />
     </AppContainer>

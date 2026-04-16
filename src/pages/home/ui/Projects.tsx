@@ -1,6 +1,13 @@
 import styled from "styled-components";
+import {
+  WideSection as BaseSection,
+  SectionContainer as Container,
+  HeaderSection as SharedHeaderSection,
+  SectionSubtitle as Title,
+  Tag,
+} from "../../../shared/ui";
 
-export default function Projects() {
+export function Projects() {
   const projects = [
     {
       name: "Muffins",
@@ -32,7 +39,7 @@ export default function Projects() {
         </HeaderSection>
 
         <ProjectsList>
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <ProjectCard key={project.name}>
               <GradientBackground />
               <DecorativeElement />
@@ -77,27 +84,13 @@ export default function Projects() {
   );
 }
 
-const Section = styled.section`
-  padding: 128px 32px;
+const Section = styled(BaseSection)`
+  background: #f5f1e8;
 `;
 
-const Container = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-`;
-
-const HeaderSection = styled.div`
-  margin-bottom: 64px;
-`;
-
-const Title = styled.h2`
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: #c8a97e;
-  margin: 0 0 16px 0;
+const HeaderSection = styled(SharedHeaderSection)`
+  margin: 0 0 64px;
+  text-align: left;
 `;
 
 const Description = styled.p`
@@ -227,18 +220,4 @@ const TagsList = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-`;
-
-const Tag = styled.span`
-  padding: 8px 16px;
-  background: #f5f1e8;
-  color: #2b2b2b;
-  border-radius: 12px;
-  font-size: 14px;
-  font-weight: 500;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background: rgba(200, 169, 126, 0.1);
-  }
 `;

@@ -1,6 +1,13 @@
 import styled from "styled-components";
+import {
+  Section as BaseSection,
+  SectionContainer as Container,
+  CenteredSectionContent as Content,
+  SectionSubtitle as Subtitle,
+  SectionParagraph as Description,
+} from "../../../shared/ui";
 
-export default function Contact() {
+export function Contact() {
   const contactMethods = [
     {
       name: "Telegram",
@@ -95,29 +102,8 @@ export default function Contact() {
   );
 }
 
-const Section = styled.section`
-  padding: 8rem 2rem;
-`;
-
-const Container = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-`;
-
-const Content = styled.div`
-  max-width: 700px;
-  margin: 0 auto;
-  text-align: center;
-`;
-
-const Subtitle = styled.h2`
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: #c8a97e;
-  margin-bottom: 1.5rem;
-  font-family: var(--font-display);
-  font-weight: 600;
+const Section = styled(BaseSection)`
+  background: #f5f1e8;
 `;
 
 const Title = styled.h3`
@@ -126,13 +112,6 @@ const Title = styled.h3`
   margin-bottom: 1.5rem;
   font-family: var(--font-display);
   font-weight: 600;
-`;
-
-const Description = styled.p`
-  font-size: 19px;
-  color: #6f6b63;
-  line-height: 1.625;
-  margin-bottom: 4rem;
 `;
 
 const ContactList = styled.div`

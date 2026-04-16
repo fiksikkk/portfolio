@@ -1,6 +1,14 @@
 import styled from "styled-components";
+import {
+  SectionWrapper,
+  SectionContent as Content,
+  SectionSubtitle as Subtitle,
+  SectionText as Description,
+  CardBase,
+  IconContainer as IconContainerBase,
+} from "../../../shared/ui";
 
-export default function Personal() {
+export function Personal() {
   const interests = [
     {
       title: "Smart Home",
@@ -47,69 +55,35 @@ export default function Personal() {
   ];
 
   return (
-    <Section>
-      <Container>
-        <Content>
-          <Subtitle>Beyond Code</Subtitle>
+    <SectionWrapper background="surface">
+      <Content>
+        <Subtitle>Beyond Code</Subtitle>
 
-          <Description>
-            When I'm not building software, I enjoy working with my hands and
-            exploring the intersection of engineering and craftsmanship. These
-            pursuits inform my approach to development — attention to detail,
-            systematic thinking, and an appreciation for well-built systems.
-          </Description>
+        <Description>
+          When I'm not building software, I enjoy working with my hands and
+          exploring the intersection of engineering and craftsmanship. These
+          pursuits inform my approach to development — attention to detail,
+          systematic thinking, and an appreciation for well-built systems.
+        </Description>
 
-          <Grid>
-            {interests.map((interest, index) => (
-              <Card
-                key={interest.title}
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <IconContainer>{interest.icon}</IconContainer>
+        <Grid>
+          {interests.map((interest, index) => (
+            <Card
+              key={interest.title}
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              <IconContainer>{interest.icon}</IconContainer>
 
-                <Title>{interest.title}</Title>
+              <Title>{interest.title}</Title>
 
-                <Text>{interest.description}</Text>
-              </Card>
-            ))}
-          </Grid>
-        </Content>
-      </Container>
-    </Section>
+              <Text>{interest.description}</Text>
+            </Card>
+          ))}
+        </Grid>
+      </Content>
+    </SectionWrapper>
   );
 }
-
-const Section = styled.section`
-  padding: 8rem 2rem;
-  background-color: #ffffff;
-`;
-
-const Container = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-`;
-
-const Content = styled.div`
-  max-width: 800px;
-  margin: 0 auto;
-`;
-
-const Subtitle = styled.h2`
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: #c8a97e;
-  margin-bottom: 1.5rem;
-  font-family: var(--font-display);
-  font-weight: 600;
-`;
-
-const Description = styled.p`
-  font-size: 21px;
-  line-height: 1.7;
-  color: #2b2b2b;
-  margin-bottom: 3rem;
-`;
 
 const Grid = styled.div`
   display: grid;
@@ -121,18 +95,13 @@ const Grid = styled.div`
   }
 `;
 
-const Card = styled.div`
-  padding: 1.5rem;
-  background-color: #f5f1e8;
-  border-radius: 20px;
-  transition: all 0.5s;
-
+const Card = styled(CardBase)`
   &:hover {
     background-color: rgba(200, 169, 126, 0.1);
   }
 `;
 
-const IconContainer = styled.div`
+const IconContainer = styled(IconContainerBase)`
   width: 3rem;
   height: 3rem;
   border-radius: 14px;
@@ -149,7 +118,7 @@ const IconContainer = styled.div`
     height: 24px;
   }
 
-  .group:hover & {
+  ${Card}:hover & {
     transform: scale(1.1);
   }
 `;

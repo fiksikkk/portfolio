@@ -1,7 +1,12 @@
 import heroPhoto from "../../../shared/assets/hero-photo.png";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
+import {
+  AnimatedBlock,
+  PrimaryButton,
+  SecondaryButton,
+} from "../../../shared/ui";
 
-export default function Hero() {
+export function Hero() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -64,27 +69,11 @@ export default function Hero() {
   );
 }
 
-const fadeInUp = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
-
-const AnimatedBlock = styled.div<{ delay?: string }>`
-  animation: ${fadeInUp} 0.8s ease-out forwards;
-  opacity: 0;
-  animation-delay: ${({ delay }) => delay ?? "0ms"};
-`;
-
 const Section = styled.section`
   min-height: 100vh;
   display: flex;
   align-items: center;
+  background: #f5f1e8;
 `;
 
 const Content = styled.div`
@@ -147,38 +136,6 @@ const ButtonRow = styled(AnimatedBlock)`
   display: flex;
   gap: 1rem;
   padding-top: 1rem;
-`;
-
-const ButtonBase = styled.button`
-  padding: 1rem 2rem;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.3s ease;
-`;
-
-const PrimaryButton = styled(ButtonBase)`
-  background: #c8a97e;
-  color: #ffffff;
-
-  &:hover {
-    background: #b8996e;
-    box-shadow: 0 8px 24px rgba(200, 169, 126, 0.25);
-    transform: translateY(-2px);
-  }
-`;
-
-const SecondaryButton = styled(ButtonBase)`
-  background: #ffffff;
-  color: #2b2b2b;
-  box-shadow: 0 1px 3px rgba(43, 43, 43, 0.08);
-
-  &:hover {
-    background: #fafafa;
-    box-shadow: 0 4px 16px rgba(43, 43, 43, 0.12);
-    transform: translateY(-2px);
-  }
 `;
 
 const RightColumn = styled(AnimatedBlock)`
