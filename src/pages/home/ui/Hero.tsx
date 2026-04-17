@@ -1,13 +1,12 @@
 import heroPhoto from "shared/assets/images/hero-photo.png";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 import { Colors } from "shared/styles/colors";
-import {
-  AnimatedBlock,
-  PrimaryButton,
-  SecondaryButton,
-} from "shared/ui";
+import { AnimatedBlock, PrimaryButton, SecondaryButton } from "shared/ui";
 
 export function Hero() {
+  const { t } = useTranslation();
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -28,27 +27,24 @@ export function Hero() {
         <Columns>
           <LeftColumn>
             <TextBlock delay="100ms">
-              <Title>Yakov Varenik</Title>
-              <Subtitle>Fullstack Developer</Subtitle>
+              <Title>{t("hero.name")}</Title>
+              <Subtitle>{t("hero.role")}</Subtitle>
             </TextBlock>
 
-            <Description delay="300ms">
-              Building fast and reliable applications — from mobile interfaces
-              to backend architecture
-            </Description>
+            <Description delay="300ms">{t("hero.description")}</Description>
 
             <ButtonRow delay="400ms">
               <PrimaryButton
                 type="button"
                 onClick={() => scrollToSection("projects")}
               >
-                View Projects
+                {t("hero.primaryButton")}
               </PrimaryButton>
               <SecondaryButton
                 type="button"
                 onClick={() => scrollToSection("contact")}
               >
-                Contact
+                {t("hero.secondaryButton")}
               </SecondaryButton>
             </ButtonRow>
           </LeftColumn>
@@ -58,7 +54,7 @@ export function Hero() {
               <Overlay />
               <HeroImage
                 src={heroPhoto}
-                alt="Yakov Varenik"
+                alt={t("hero.imageAlt")}
                 loading="eager"
                 decoding="async"
               />
@@ -71,7 +67,6 @@ export function Hero() {
 }
 
 const Section = styled.section`
-  min-height: 100vh;
   display: flex;
   align-items: center;
   background: ${Colors.base};

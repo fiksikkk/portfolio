@@ -1,11 +1,15 @@
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 import { Colors } from "shared/styles/colors";
+import { SUPPORTED_LANGUAGES } from "shared/libs/i18n";
 
 interface HeaderProps {
   scrolled: boolean;
 }
 
 export function Header({ scrolled }: HeaderProps) {
+  const { t, i18n } = useTranslation();
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -31,29 +35,47 @@ export function Header({ scrolled }: HeaderProps) {
             YV.
           </LogoButton>
 
-          <NavList>
-            <NavItem>
-              <NavButton type="button" onClick={() => scrollToSection("about")}>
-                About
-              </NavButton>
-            </NavItem>
-            <NavItem>
-              <NavButton
-                type="button"
-                onClick={() => scrollToSection("projects")}
-              >
-                Projects
-              </NavButton>
-            </NavItem>
-            <NavItem>
-              <NavButton
-                type="button"
-                onClick={() => scrollToSection("contact")}
-              >
-                Contact
-              </NavButton>
-            </NavItem>
-          </NavList>
+          <Navigation>
+            <NavList>
+              <NavItem>
+                <NavButton
+                  type="button"
+                  onClick={() => scrollToSection("about")}
+                >
+                  {t("header.nav.about")}
+                </NavButton>
+              </NavItem>
+              <NavItem>
+                <NavButton
+                  type="button"
+                  onClick={() => scrollToSection("projects")}
+                >
+                  {t("header.nav.projects")}
+                </NavButton>
+              </NavItem>
+              <NavItem>
+                <NavButton
+                  type="button"
+                  onClick={() => scrollToSection("contact")}
+                >
+                  {t("header.nav.contact")}
+                </NavButton>
+              </NavItem>
+            </NavList>
+
+            <LanguageSwitcher>
+              {SUPPORTED_LANGUAGES.map((language) => (
+                <LanguageButton
+                  key={language}
+                  type="button"
+                  onClick={() => void i18n.changeLanguage(language)}
+                  $active={i18n.language.startsWith(language)}
+                >
+                  {language.toUpperCase()}
+                </LanguageButton>
+              ))}
+            </LanguageSwitcher>
+          </Navigation>
         </HeaderNav>
       </HeaderContainer>
     </HeaderWrapper>
@@ -84,6 +106,13 @@ const HeaderNav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
+`;
+
+const Navigation = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 `;
 
 const LogoButton = styled.button`
@@ -105,7 +134,7 @@ const LogoButton = styled.button`
 const NavList = styled.ul`
   display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -123,5 +152,34 @@ const NavButton = styled.button`
 
   &:hover {
     color: ${Colors.foreground};
+  }
+`;
+
+const LanguageSwitcher = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem;
+  border: 1px solid ${Colors.foregroundTint10};
+  border-radius: 9999px;
+  background: ${Colors.surfaceTint60};
+`;
+
+const LanguageButton = styled.button<{ $active: boolean }>`
+  min-width: 40px;
+  border: none;
+  border-radius: 9999px;
+  background: ${({ $active }) =>
+    $active ? Colors.primary : Colors.transparent};
+  color: ${({ $active }) => ($active ? Colors.surface : Colors.muted)};
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: ${({ $active }) => ($active ? Colors.surface : Colors.foreground)};
   }
 `;

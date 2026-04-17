@@ -1,7 +1,9 @@
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 import { Colors } from "shared/styles/colors";
 
 export function Footer() {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -11,11 +13,11 @@ export function Footer() {
           <LogoSection>
             <Logo>YV.</Logo>
             <Dot />
-            <Title>Fullstack Developer</Title>
+            <Title>{t("footer.title")}</Title>
           </LogoSection>
 
           <Copyright>
-            © {currentYear} Yakov Varenik. Crafted with care.
+            {`© ${currentYear} Yakov Varenik. ${t("footer.copyright")}`}
           </Copyright>
         </Content>
       </Container>

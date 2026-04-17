@@ -15,6 +15,7 @@ export const Colors = {
   primaryTint25: "rgba(200, 169, 126, 0.25)",
   foregroundTint06: "rgba(43, 43, 43, 0.06)",
   foregroundTint08: "rgba(43, 43, 43, 0.08)",
+  foregroundTint10: "rgba(43, 43, 43, 0.1)",
   foregroundTint12: "rgba(43, 43, 43, 0.12)",
   surfaceTint20: "rgba(255, 255, 255, 0.2)",
   surfaceTint60: "rgba(255, 255, 255, 0.6)",

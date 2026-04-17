@@ -44,7 +44,6 @@
   },
   "include": [
     "src",
-    "index.tsx",
-    "App.tsx"
+    "index.tsx"
   ]
 }

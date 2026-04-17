@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 import { Colors } from "shared/styles/colors";
 import {
   WideSection as BaseSection,
@@ -8,35 +9,23 @@ import {
   Tag,
 } from "shared/ui";
 
+interface Project {
+  name: string;
+  description: string;
+  tags: string[];
+  highlight: string;
+}
+
 export function Projects() {
-  const projects = [
-    {
-      name: "Muffins",
-      description: `Developed and maintained a B2B medical benefits platform across web, mobile, and backend.
-                    Refactored legacy code and wrote tests (Jest, Detox) to improve performance and stability.
-                    Used AI tools and prompt engineering to streamline development and ensure reliable results.`,
-      tags: ["React", "Node.js", "GraphQL", "AI Integration", "PostgreSQL"],
-      highlight: "B2B Platform",
-    },
-    {
-      name: "JetRuby Mobile",
-      description: `Built a fitness and health mobile app from scratch using React Native.
-                    Implemented UI from designs, integrated REST APIs, and managed state and navigation.
-                    Optimized performance and stability, and contributed to code reviews and planning.`,
-      tags: ["React Native", "TypeScript", "Redux", "Detox", "Performance"],
-      highlight: "Mobile App",
-    },
-  ];
+  const { t } = useTranslation();
+  const projects = t("projects.items", { returnObjects: true }) as Project[];
 
   return (
     <Section id="projects">
       <Container>
         <HeaderSection>
-          <Title>Featured Projects</Title>
-          <Description>
-            Selected work showcasing expertise in fullstack development, mobile
-            architecture, and performance optimization.
-          </Description>
+          <Title>{t("projects.title")}</Title>
+          <Description>{t("projects.description")}</Description>
         </HeaderSection>
 
         <ProjectsList>

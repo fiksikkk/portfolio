@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 import { Colors } from "shared/styles/colors";
 import {
   WideSection as BaseWideSection,
@@ -8,24 +9,16 @@ import {
   SectionParagraph as Description,
 } from "shared/ui";
 
+interface AICapability {
+  title: string;
+  description: string;
+}
+
 export function AISection() {
-  const aiCapabilities = [
-    {
-      title: "Code Generation",
-      description:
-        "Accelerate development with AI-assisted code generation and boilerplate reduction",
-    },
-    {
-      title: "Automation",
-      description:
-        "Streamline workflows through intelligent automation and tooling",
-    },
-    {
-      title: "Code Review",
-      description:
-        "Enhance code quality with AI-powered analysis and suggestions",
-    },
-  ];
+  const { t } = useTranslation();
+  const aiCapabilities = t("ai.capabilities", {
+    returnObjects: true,
+  }) as AICapability[];
 
   return (
     <Section>
@@ -34,14 +27,9 @@ export function AISection() {
 
       <Container>
         <HeaderSection>
-          <Subtitle>AI-Enhanced Development</Subtitle>
-          <Title>Building smarter, faster</Title>
-          <Description>
-            I integrate AI tools throughout the development process to enhance
-            productivity, improve code quality, and solve complex problems more
-            efficiently. This allows me to deliver exceptional results while
-            maintaining high standards of craftsmanship.
-          </Description>
+          <Subtitle>{t("ai.subtitle")}</Subtitle>
+          <Title>{t("ai.title")}</Title>
+          <Description>{t("ai.description")}</Description>
         </HeaderSection>
 
         <CapabilitiesGrid>
