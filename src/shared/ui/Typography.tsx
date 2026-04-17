@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Colors } from "../styles/colors";
+import { Colors } from "shared/styles/colors";
 
 export const SectionSubtitle = styled.h2`
   font-size: 14px;

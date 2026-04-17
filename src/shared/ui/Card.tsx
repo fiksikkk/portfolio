@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Colors } from "../styles/colors";
+import { Colors } from "shared/styles/colors";
 
 export const CardBase = styled.div`
   padding: 1.5rem;

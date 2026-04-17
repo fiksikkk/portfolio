@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Colors } from "../../shared/styles/colors";
+import { Colors } from "shared/styles/colors";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();

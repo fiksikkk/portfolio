@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { Colors } from "../../../shared/styles/colors";
+import { Colors } from "shared/styles/colors";
 import {
   WideSection as BaseSection,
   SectionContainer as Container,
   HeaderSection as SharedHeaderSection,
   SectionSubtitle as Title,
   Tag,
-} from "../../../shared/ui";
+} from "shared/ui";
 
 export function Projects() {
   const projects = [

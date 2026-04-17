@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { Colors } from "../../../shared/styles/colors";
+import { Colors } from "shared/styles/colors";
 import {
   SectionWrapper,
   SectionSubtitle,
   CardBase,
   IconContainer as IconContainerBase,
-} from "../../../shared/ui";
+} from "shared/ui";
 
 export function Skills() {
   const skillCategories = [

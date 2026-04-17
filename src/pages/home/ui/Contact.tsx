@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { Colors } from "../../../shared/styles/colors";
+import { Colors } from "shared/styles/colors";
 import {
   Section as BaseSection,
   SectionContainer as Container,
   CenteredSectionContent as Content,
   SectionSubtitle as Subtitle,
   SectionParagraph as Description,
-} from "../../../shared/ui";
+} from "shared/ui";
 
 export function Contact() {
   const contactMethods = [

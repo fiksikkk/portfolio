@@ -1,11 +1,11 @@
-import heroPhoto from "../../../shared/assets/images/hero-photo.png";
+import heroPhoto from "shared/assets/images/hero-photo.png";
 import styled from "styled-components";
-import { Colors } from "../../../shared/styles/colors";
+import { Colors } from "shared/styles/colors";
 import {
   AnimatedBlock,
   PrimaryButton,
   SecondaryButton,
-} from "../../../shared/ui";
+} from "shared/ui";
 
 export function Hero() {
   const scrollToSection = (id: string) => {

@@ -3,7 +3,7 @@ import {
   SectionContent as Content,
   SectionSubtitle as Subtitle,
   SectionText as Description,
-} from "../../../shared/ui";
+} from "shared/ui";
 
 export function About() {
   return (

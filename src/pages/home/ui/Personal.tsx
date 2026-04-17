@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Colors } from "../../../shared/styles/colors";
+import { Colors } from "shared/styles/colors";
 import {
   SectionWrapper,
   SectionContent as Content,
@@ -7,7 +7,7 @@ import {
   SectionText as Description,
   CardBase,
   IconContainer as IconContainerBase,
-} from "../../../shared/ui";
+} from "shared/ui";
 
 export function Personal() {
   const interests = [
