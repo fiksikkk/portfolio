@@ -1,22 +1,14 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { Header } from "widgets/header";
 import { HomePage } from "pages/home";
 import { Footer } from "widgets/footer";
+import { useScrollEffects } from "./lib/overscroll";
 
 export function App() {
-  const [scrolled, setScrolled] = useState(false);
+  const { headerBackgroundColor } = useScrollEffects();
   const { t, i18n } = useTranslation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     document.title = t("seo.title");
@@ -35,7 +27,7 @@ export function App() {
 
   return (
     <AppContainer>
-      <Header scrolled={scrolled} />
+      <Header backgroundColor={headerBackgroundColor} />
 
       <HomePage />
 

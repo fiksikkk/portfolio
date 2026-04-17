@@ -4,10 +4,10 @@ import { Colors } from "shared/styles/colors";
 import { SUPPORTED_LANGUAGES } from "shared/libs/i18n";
 
 interface HeaderProps {
-  scrolled: boolean;
+  backgroundColor: string;
 }
 
-export function Header({ scrolled }: HeaderProps) {
+export function Header({ backgroundColor }: HeaderProps) {
   const { t, i18n } = useTranslation();
 
   const scrollToSection = (id: string) => {
@@ -25,7 +25,7 @@ export function Header({ scrolled }: HeaderProps) {
   };
 
   return (
-    <HeaderWrapper scrolled={scrolled}>
+    <HeaderWrapper backgroundColor={backgroundColor}>
       <HeaderContainer>
         <HeaderNav>
           <LogoButton
@@ -82,18 +82,20 @@ export function Header({ scrolled }: HeaderProps) {
   );
 }
 
-const HeaderWrapper = styled.header<{ scrolled: boolean }>`
+const HeaderWrapper = styled.header<{ backgroundColor: string }>`
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 50;
   transition: all 0.5s;
-  background: ${({ scrolled }) =>
-    scrolled ? Colors.surfaceTint80 : Colors.transparent};
-  backdrop-filter: ${({ scrolled }) => (scrolled ? "blur(20px)" : "none")};
-  box-shadow: ${({ scrolled }) =>
-    scrolled ? `0 1px 0 ${Colors.foregroundTint06}` : "none"};
+  background: ${({ backgroundColor }) => backgroundColor};
+  backdrop-filter: ${({ backgroundColor }) =>
+    backgroundColor === Colors.transparent ? "none" : "blur(20px)"};
+  box-shadow: ${({ backgroundColor }) =>
+    backgroundColor === Colors.transparent
+      ? "none"
+      : `0 1px 0 ${Colors.foregroundTint06}`};
 `;
 
 const HeaderContainer = styled.div`
