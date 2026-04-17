@@ -1,5 +1,6 @@
 import heroPhoto from "../../../shared/assets/images/hero-photo.png";
 import styled from "styled-components";
+import { Colors } from "../../../shared/styles/colors";
 import {
   AnimatedBlock,
   PrimaryButton,
@@ -73,7 +74,7 @@ const Section = styled.section`
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: #f5f1e8;
+  background: ${Colors.base};
 `;
 
 const Content = styled.div`
@@ -120,13 +121,13 @@ const Subtitle = styled.p`
   font-weight: 400;
   font-size: 24px;
   line-height: 1.4;
-  color: #6f6b63;
+  color: ${Colors.muted};
   margin: 0;
 `;
 
 const Description = styled(AnimatedBlock)`
   font-size: 17px;
-  color: #6f6b63;
+  color: ${Colors.muted};
   line-height: 1.75;
   max-width: 520px;
   margin: 0;
@@ -152,9 +153,9 @@ const ImageCard = styled.div`
   width: 100%;
   max-width: 420px;
   aspect-ratio: 3 / 4;
-  background: #ffffff;
+  background: ${Colors.surface};
   border-radius: 24px;
-  box-shadow: 0 8px 32px rgba(43, 43, 43, 0.08);
+  box-shadow: 0 8px 32px ${Colors.foregroundTint08};
   overflow: hidden;
 
   &:hover > div {
@@ -165,7 +166,11 @@ const ImageCard = styled.div`
 const Overlay = styled.div`
   position: absolute;
   inset: 0;
-  background: linear-gradient(225deg, rgba(200, 169, 126, 0.1), transparent);
+  background: linear-gradient(
+    225deg,
+    ${Colors.primaryTint10},
+    ${Colors.transparent}
+  );
   opacity: 0;
   transition: opacity 0.5s ease;
 `;

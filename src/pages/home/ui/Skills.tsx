@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Colors } from "../../../shared/styles/colors";
 import {
   SectionWrapper,
   SectionSubtitle,
@@ -152,8 +153,8 @@ const Card = styled(CardBase)`
   cursor: pointer;
 
   &:hover {
-    background: #ffffff;
-    box-shadow: 0 8px 32px rgba(43, 43, 43, 0.08);
+    background: ${Colors.surface};
+    box-shadow: 0 8px 32px ${Colors.foregroundTint08};
     transform: translateY(-4px);
   }
 `;
@@ -162,14 +163,14 @@ const IconContainer = styled(IconContainerBase)`
   width: 48px;
   height: 48px;
   border-radius: 16px;
-  background: #ffffff;
-  color: #c8a97e;
+  background: ${Colors.surface};
+  color: ${Colors.primary};
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 24px;
   transition: all 0.5s ease;
-  box-shadow: 0 2px 8px rgba(43, 43, 43, 0.06);
+  box-shadow: 0 2px 8px ${Colors.foregroundTint06};
 
   svg {
     width: 24px;
@@ -177,8 +178,8 @@ const IconContainer = styled(IconContainerBase)`
   }
 
   ${Card}:hover & {
-    background: #c8a97e;
-    color: #ffffff;
+    background: ${Colors.primary};
+    color: ${Colors.surface};
   }
 `;
 
@@ -197,7 +198,7 @@ const SkillList = styled.ul`
 
 const SkillItem = styled.li`
   font-size: 15px;
-  color: #6f6b63;
+  color: ${Colors.muted};
   margin-bottom: 8px;
 
   &:last-child {

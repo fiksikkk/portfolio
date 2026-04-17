@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Colors } from "../../../shared/styles/colors";
 import {
   Section as BaseSection,
   SectionContainer as Container,
@@ -79,19 +80,14 @@ export function Contact() {
                 </ContactInfo>
 
                 <ArrowContainer>
-                  <svg
-                    className="w-5 h-5 text-[#C8A97E] group-hover:text-white transition-colors duration-500"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
+                  <ArrowIcon fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
                       d="M14 5l7 7m0 0l-7 7m7-7H3"
                     />
-                  </svg>
+                  </ArrowIcon>
                 </ArrowContainer>
               </ContactLink>
             ))}
@@ -103,7 +99,7 @@ export function Contact() {
 }
 
 const Section = styled(BaseSection)`
-  background: #f5f1e8;
+  background: ${Colors.base};
 `;
 
 const Title = styled.h3`
@@ -125,15 +121,15 @@ const ContactLink = styled.a`
   align-items: center;
   justify-content: space-between;
   padding: 2rem;
-  background-color: #ffffff;
+  background-color: ${Colors.surface};
   border-radius: 24px;
-  box-shadow: 0 2px 12px rgba(43, 43, 43, 0.06);
+  box-shadow: 0 2px 12px ${Colors.foregroundTint06};
   transition: all 0.5s;
   text-decoration: none;
 
   &:hover {
-    box-shadow: 0 8px 32px rgba(200, 169, 126, 0.2);
-    background-color: #c8a97e;
+    box-shadow: 0 8px 32px ${Colors.primaryTint20};
+    background-color: ${Colors.primary};
     transform: translateY(-4px);
   }
 `;
@@ -148,8 +144,8 @@ const IconContainer = styled.div`
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 16px;
-  background-color: #f5f1e8;
-  color: #c8a97e;
+  background-color: ${Colors.base};
+  color: ${Colors.primary};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -161,8 +157,8 @@ const IconContainer = styled.div`
   }
 
   ${ContactLink}:hover & {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #ffffff;
+    background-color: ${Colors.surfaceTint20};
+    color: ${Colors.surface};
   }
 `;
 
@@ -173,23 +169,23 @@ const ContactDetails = styled.div`
 const ContactName = styled.div`
   font-size: 20px;
   margin-bottom: 0.25rem;
-  color: #2b2b2b;
+  color: ${Colors.foreground};
   font-family: var(--font-display);
   font-weight: 600;
   transition: color 0.5s;
 
   ${ContactLink}:hover & {
-    color: #ffffff;
+    color: ${Colors.surface};
   }
 `;
 
 const ContactHandle = styled.div`
   font-size: 15px;
-  color: #6f6b63;
+  color: ${Colors.muted};
   transition: color 0.5s;
 
   ${ContactLink}:hover & {
-    color: rgba(255, 255, 255, 0.8);
+    color: ${Colors.surfaceTint80};
   }
 `;
 
@@ -197,25 +193,25 @@ const ArrowContainer = styled.div`
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  background-color: #f5f1e8;
+  background-color: ${Colors.base};
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.5s;
 
   ${ContactLink}:hover & {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: ${Colors.surfaceTint20};
     transform: translateX(4px);
   }
+`;
 
-  svg {
-    width: 1.25rem;
-    height: 1.25rem;
-    color: #c8a97e;
-    transition: color 0.5s;
+const ArrowIcon = styled.svg`
+  width: 1.25rem;
+  height: 1.25rem;
+  color: ${Colors.primary};
+  transition: color 0.5s;
 
-    ${ContactLink}:hover & {
-      color: #ffffff;
-    }
+  ${ContactLink}:hover & {
+    color: ${Colors.surface};
   }
 `;

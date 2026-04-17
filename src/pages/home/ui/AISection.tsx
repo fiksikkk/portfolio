@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Colors } from "../../../shared/styles/colors";
 import {
   WideSection as BaseWideSection,
   SectionContainer as Container,
@@ -69,35 +70,32 @@ export function AISection() {
 const Section = styled(BaseWideSection)`
   background: linear-gradient(
     225deg,
-    rgba(200, 169, 126, 0.08),
-    #f5f1e8,
-    transparent
+    ${Colors.primaryTint08},
+    ${Colors.base},
+    ${Colors.transparent}
   );
   position: relative;
   overflow: hidden;
 `;
 
-const DecorativeCircle1 = styled.div`
+const DecorativeCircle = styled.div`
   position: absolute;
-  top: 0;
-  left: 0;
   width: 384px;
   height: 384px;
-  background: rgba(200, 169, 126, 0.1);
+  background: ${Colors.primaryTint10};
   border-radius: 50%;
   filter: blur(96px);
+`;
+
+const DecorativeCircle1 = styled(DecorativeCircle)`
+  top: 0;
+  left: 0;
   transform: translate(-192px, -192px);
 `;
 
-const DecorativeCircle2 = styled.div`
-  position: absolute;
+const DecorativeCircle2 = styled(DecorativeCircle)`
   bottom: 0;
   right: 0;
-  width: 384px;
-  height: 384px;
-  background: rgba(200, 169, 126, 0.1);
-  border-radius: 50%;
-  filter: blur(96px);
   transform: translate(192px, 192px);
 `;
 
@@ -120,15 +118,15 @@ const CapabilitiesGrid = styled.div`
 `;
 
 const CapabilityCard = styled.div`
-  background: rgba(255, 255, 255, 0.6);
+  background: ${Colors.surfaceTint60};
   backdrop-filter: blur(8px);
   border-radius: 24px;
   padding: 32px;
   transition: all 0.5s ease;
 
   &:hover {
-    background: #ffffff;
-    box-shadow: 0 8px 32px rgba(200, 169, 126, 0.15);
+    background: ${Colors.surface};
+    box-shadow: 0 8px 32px ${Colors.primaryTint15};
   }
 `;
 
@@ -136,7 +134,7 @@ const IconContainer = styled.div`
   width: 40px;
   height: 40px;
   border-radius: 12px;
-  background: rgba(200, 169, 126, 0.1);
+  background: ${Colors.primaryTint10};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -147,7 +145,7 @@ const IconDot = styled.div`
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #c8a97e;
+  background: ${Colors.primary};
 `;
 
 const CapabilityTitle = styled.h4`
@@ -159,7 +157,7 @@ const CapabilityTitle = styled.h4`
 
 const CapabilityDescription = styled.p`
   font-size: 15px;
-  color: #6f6b63;
+  color: ${Colors.muted};
   line-height: 1.75;
   margin: 0;
 `;

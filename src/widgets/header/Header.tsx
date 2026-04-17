@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Colors } from "../../shared/styles/colors";
 
 interface HeaderProps {
   scrolled: boolean;
@@ -67,10 +68,10 @@ const HeaderWrapper = styled.header<{ scrolled: boolean }>`
   z-index: 50;
   transition: all 0.5s;
   background: ${({ scrolled }) =>
-    scrolled ? "rgba(255, 255, 255, 0.8)" : "transparent"};
+    scrolled ? Colors.surfaceTint80 : Colors.transparent};
   backdrop-filter: ${({ scrolled }) => (scrolled ? "blur(20px)" : "none")};
   box-shadow: ${({ scrolled }) =>
-    scrolled ? "0 1px 0 rgba(43, 43, 43, 0.06)" : "none"};
+    scrolled ? `0 1px 0 ${Colors.foregroundTint06}` : "none"};
 `;
 
 const HeaderContainer = styled.div`
@@ -97,7 +98,7 @@ const LogoButton = styled.button`
   font-weight: 600;
 
   &:hover {
-    color: #c8a97e;
+    color: ${Colors.primary};
   }
 `;
 
@@ -114,13 +115,13 @@ const NavItem = styled.li``;
 
 const NavButton = styled.button`
   font-size: 15px;
-  color: #6f6b63;
+  color: ${Colors.muted};
   background: none;
   border: none;
   cursor: pointer;
   transition: color 0.3s ease;
 
   &:hover {
-    color: #2b2b2b;
+    color: ${Colors.foreground};
   }
 `;

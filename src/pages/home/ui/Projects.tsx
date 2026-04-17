@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Colors } from "../../../shared/styles/colors";
 import {
   WideSection as BaseSection,
   SectionContainer as Container,
@@ -85,7 +86,7 @@ export function Projects() {
 }
 
 const Section = styled(BaseSection)`
-  background: #f5f1e8;
+  background: ${Colors.base};
 `;
 
 const HeaderSection = styled(SharedHeaderSection)`
@@ -95,7 +96,7 @@ const HeaderSection = styled(SharedHeaderSection)`
 
 const Description = styled.p`
   font-size: 17px;
-  color: #6f6b63;
+  color: ${Colors.muted};
   max-width: 600px;
   margin: 0;
 `;
@@ -108,16 +109,16 @@ const ProjectsList = styled.div`
 
 const ProjectCard = styled.div`
   position: relative;
-  background: #ffffff;
+  background: ${Colors.surface};
   border-radius: 24px;
   padding: 48px;
-  box-shadow: 0 2px 16px rgba(43, 43, 43, 0.06);
+  box-shadow: 0 2px 16px ${Colors.foregroundTint06};
   transition: all 0.5s ease;
   overflow: hidden;
   cursor: pointer;
 
   &:hover {
-    box-shadow: 0 12px 48px rgba(43, 43, 43, 0.12);
+    box-shadow: 0 12px 48px ${Colors.foregroundTint12};
     transform: translateY(-8px);
   }
 `;
@@ -125,7 +126,11 @@ const ProjectCard = styled.div`
 const GradientBackground = styled.div`
   position: absolute;
   inset: 0;
-  background: linear-gradient(225deg, rgba(200, 169, 126, 0.05), transparent);
+  background: linear-gradient(
+    225deg,
+    ${Colors.primaryTint05},
+    ${Colors.transparent}
+  );
   opacity: 0;
   transition: opacity 0.5s ease;
 
@@ -140,7 +145,7 @@ const DecorativeElement = styled.div`
   right: 0;
   width: 192px;
   height: 192px;
-  background: rgba(200, 169, 126, 0.05);
+  background: ${Colors.primaryTint05};
   border-radius: 50%;
   filter: blur(48px);
   transform: translate(96px, -96px);
@@ -167,8 +172,8 @@ const ProjectInfo = styled.div``;
 const HighlightBadge = styled.div`
   display: inline-block;
   padding: 6px 16px;
-  background: rgba(200, 169, 126, 0.1);
-  color: #c8a97e;
+  background: ${Colors.primaryTint10};
+  color: ${Colors.primary};
   border-radius: 9999px;
   font-size: 13px;
   font-weight: 600;
@@ -186,7 +191,7 @@ const ArrowIcon = styled.div`
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: #f5f1e8;
+  background: ${Colors.base};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -195,22 +200,22 @@ const ArrowIcon = styled.div`
   svg {
     width: 20px;
     height: 20px;
-    color: #c8a97e;
+    color: ${Colors.primary};
     transition: color 0.5s ease;
   }
 
   ${ProjectCard}:hover & {
-    background: #c8a97e;
+    background: ${Colors.primary};
 
     svg {
-      color: #ffffff;
+      color: ${Colors.surface};
     }
   }
 `;
 
 const ProjectDescription = styled.p`
   font-size: 17px;
-  color: #6f6b63;
+  color: ${Colors.muted};
   line-height: 1.75;
   margin: 0 0 32px 0;
   max-width: 800px;

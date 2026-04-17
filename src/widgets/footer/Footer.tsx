@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Colors } from "../../shared/styles/colors";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -24,8 +25,8 @@ export function Footer() {
 
 const FooterContainer = styled.footer`
   padding: 4rem 2rem;
-  background-color: #ffffff;
-  border-top: 1px solid rgba(43, 43, 43, 0.06);
+  background-color: ${Colors.surface};
+  border-top: 1px solid ${Colors.foregroundTint06};
 `;
 
 const Container = styled.div`
@@ -62,15 +63,15 @@ const Dot = styled.div`
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background-color: #c8a97e;
+  background-color: ${Colors.primary};
 `;
 
 const Title = styled.div`
   font-size: 14px;
-  color: #6f6b63;
+  color: ${Colors.muted};
 `;
 
 const Copyright = styled.div`
   font-size: 14px;
-  color: #6f6b63;
+  color: ${Colors.muted};
 `;

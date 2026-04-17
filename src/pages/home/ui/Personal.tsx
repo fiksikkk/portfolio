@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Colors } from "../../../shared/styles/colors";
 import {
   SectionWrapper,
   SectionContent as Content,
@@ -97,7 +98,7 @@ const Grid = styled.div`
 
 const Card = styled(CardBase)`
   &:hover {
-    background-color: rgba(200, 169, 126, 0.1);
+    background-color: ${Colors.primaryTint10};
   }
 `;
 
@@ -105,8 +106,8 @@ const IconContainer = styled(IconContainerBase)`
   width: 3rem;
   height: 3rem;
   border-radius: 14px;
-  background-color: #ffffff;
-  color: #c8a97e;
+  background-color: ${Colors.surface};
+  color: ${Colors.primary};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -132,5 +133,5 @@ const Title = styled.h3`
 
 const Text = styled.p`
   font-size: 15px;
-  color: #6f6b63;
+  color: ${Colors.muted};
 `;
