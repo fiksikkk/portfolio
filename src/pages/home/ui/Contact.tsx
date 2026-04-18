@@ -107,6 +107,7 @@ const ContactList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  margin-top: 24px;
 `;
 
 const ContactLink = styled.a`

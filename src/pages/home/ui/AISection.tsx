@@ -26,11 +26,11 @@ export function AISection() {
       <DecorativeCircle2 />
 
       <Container>
-        <HeaderSection>
+        <AIHeaderSection>
           <Subtitle>{t("ai.subtitle")}</Subtitle>
           <Title>{t("ai.title")}</Title>
           <Description>{t("ai.description")}</Description>
-        </HeaderSection>
+        </AIHeaderSection>
 
         <CapabilitiesGrid>
           {aiCapabilities.map((capability, index) => (
@@ -93,6 +93,10 @@ const Title = styled.h3`
   font-size: 40px;
   line-height: 1.2;
   margin: 0 0 24px 0;
+`;
+
+const AIHeaderSection = styled(HeaderSection)`
+  margin-bottom: 32px;
 `;
 
 const CapabilitiesGrid = styled.div`

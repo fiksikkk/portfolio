@@ -95,9 +95,10 @@ const TextBlock = styled(AnimatedBlock)`
 const Title = styled.h1`
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 56px;
+  font-size: clamp(28px, 10vw, 56px);
   line-height: 1.1;
   letter-spacing: -0.03em;
+  white-space: nowrap;
   margin: 0;
 `;
 

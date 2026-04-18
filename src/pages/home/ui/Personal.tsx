@@ -36,7 +36,7 @@ export function Personal() {
 
         <SectionText>{t("personal.description")}</SectionText>
 
-        <Grid>
+        <InterestsGrid>
           {interests.map((interest, index) => (
             <Card
               key={interest.title}
@@ -49,11 +49,15 @@ export function Personal() {
               <Text>{interest.description}</Text>
             </Card>
           ))}
-        </Grid>
+        </InterestsGrid>
       </SectionContent>
     </SectionWrapper>
   );
 }
+
+const InterestsGrid = styled(Grid)`
+  margin-top: 32px;
+`;
 
 const Card = styled(CardBase)`
   &:hover {

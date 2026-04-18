@@ -33,7 +33,6 @@ export function ProjectDetailsModal({
           onClick={onClose}
           aria-label={t("projects.modal.closeLabel")}
         />
-
         <ModalHighlight>{project.highlight}</ModalHighlight>
         <ModalTitle>{project.name}</ModalTitle>
         <ModalText
@@ -63,13 +62,33 @@ const ModalDialog = styled.div`
   width: 80vw;
   height: 70vh;
   overflow-y: auto;
+  box-sizing: border-box;
+  border-right: 4px solid transparent;
   background: ${Colors.surface};
   border-radius: 24px;
   padding: 56px;
   box-shadow: 0 16px 64px ${Colors.foregroundTint12};
 
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    margin-block: 24px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${Colors.foregroundTint12};
+    border-radius: 999px;
+  }
+
   @media (max-width: 768px) {
     padding: 32px 24px;
+
+    &::-webkit-scrollbar-track {
+      margin-block: 20px;
+    }
   }
 `;
 
@@ -77,6 +96,7 @@ const ModalCloseButton = styled(CloseButton)`
   position: absolute;
   top: 16px;
   right: 16px;
+  z-index: 1;
 `;
 
 const ModalHighlight = styled(PillBadge)`

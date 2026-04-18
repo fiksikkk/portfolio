@@ -126,12 +126,15 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    -webkit-tap-highlight-color: transparent;
   }
 
   html {
     scroll-behavior: smooth;
     background-color: var(--overscroll-bg, var(--background));
     transition: background-color 0.35s ease;
+    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   body {
@@ -141,10 +144,14 @@
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   #root {
     background-color: var(--overscroll-bg, var(--background));
+    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   h1,
@@ -199,6 +206,13 @@
     font-size: var(--text-base);
     font-weight: var(--font-weight-medium);
     line-height: 1.5;
+  }
+
+  button:focus,
+  button:focus-visible,
+  button:active {
+    outline: none;
+    box-shadow: none;
   }
 
   input {
