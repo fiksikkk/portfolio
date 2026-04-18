@@ -1,6 +1,10 @@
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+import { Colors } from "shared/styles/colors";
+import { SectionContainer } from "shared/ui";
 
 export function Footer() {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -10,11 +14,11 @@ export function Footer() {
           <LogoSection>
             <Logo>YV.</Logo>
             <Dot />
-            <Title>Fullstack Developer</Title>
+            <Title>{t("footer.title")}</Title>
           </LogoSection>
 
           <Copyright>
-            © {currentYear} Yakov Varenik. Crafted with care.
+            {`© ${currentYear} Yakov Varenik. ${t("footer.copyright")}`}
           </Copyright>
         </Content>
       </Container>
@@ -24,14 +28,11 @@ export function Footer() {
 
 const FooterContainer = styled.footer`
   padding: 4rem 2rem;
-  background-color: #ffffff;
-  border-top: 1px solid rgba(43, 43, 43, 0.06);
+  background-color: ${Colors.surface};
+  border-top: 1px solid ${Colors.foregroundTint06};
 `;
 
-const Container = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-`;
+const Container = styled(SectionContainer)``;
 
 const Content = styled.div`
   display: flex;
@@ -62,15 +63,15 @@ const Dot = styled.div`
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background-color: #c8a97e;
+  background-color: ${Colors.primary};
 `;
 
 const Title = styled.div`
   font-size: 14px;
-  color: #6f6b63;
+  color: ${Colors.muted};
 `;
 
 const Copyright = styled.div`
   font-size: 14px;
-  color: #6f6b63;
+  color: ${Colors.muted};
 `;

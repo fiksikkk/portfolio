@@ -1,17 +1,18 @@
 import styled from "styled-components";
+import { Colors } from "shared/styles/colors";
 
 export type SectionBackground = "transparent" | "surface" | "base";
 
 const resolveSectionBackground = (background: SectionBackground) => {
   if (background === "surface") {
-    return "#ffffff";
+    return Colors.surface;
   }
 
   if (background === "base") {
-    return "#f5f1e8";
+    return Colors.base;
   }
 
-  return "transparent";
+  return Colors.transparent;
 };
 
 export const Section = styled.section<{ $background?: SectionBackground }>`

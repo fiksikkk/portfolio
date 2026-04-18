@@ -1,0 +1,14 @@
+export { default as TelegramIcon } from "./telegram.svg?react";
+export { default as EmailIcon } from "./email.svg?react";
+export { default as GitHubIcon } from "./github.svg?react";
+export { default as ArrowRightIcon } from "./arrow-right.svg?react";
+export { default as CloseIcon } from "./close.svg?react";
+export { default as SmartHomeIcon } from "./smart-home.svg?react";
+export { default as ModelingIcon } from "./modeling.svg?react";
+export { default as WoodworkingIcon } from "./woodworking.svg?react";
+export { default as SkillFrontendIcon } from "./skill-frontend.svg?react";
+export { default as SkillBackendIcon } from "./skill-backend.svg?react";
+export { default as SkillStateDataIcon } from "./skill-state-data.svg?react";
+export { default as SkillTestingIcon } from "./skill-testing.svg?react";
+export { default as SkillDevToolsIcon } from "./skill-devtools.svg?react";
+export { default as SkillArchitectureIcon } from "./skill-architecture.svg?react";

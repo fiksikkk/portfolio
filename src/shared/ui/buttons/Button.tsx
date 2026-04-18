@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Colors } from "shared/styles/colors";
 
 export const ButtonBase = styled.button`
   padding: 1rem 2rem;
@@ -10,24 +11,24 @@ export const ButtonBase = styled.button`
 `;
 
 export const PrimaryButton = styled(ButtonBase)`
-  background: #c8a97e;
-  color: #ffffff;
+  background: ${Colors.primary};
+  color: ${Colors.surface};
 
   &:hover {
-    background: #b8996e;
-    box-shadow: 0 8px 24px rgba(200, 169, 126, 0.25);
+    background: ${Colors.primaryHover};
+    box-shadow: 0 8px 24px ${Colors.primaryTint25};
     transform: translateY(-2px);
   }
 `;
 
 export const SecondaryButton = styled(ButtonBase)`
-  background: #ffffff;
-  color: #2b2b2b;
-  box-shadow: 0 1px 3px rgba(43, 43, 43, 0.08);
+  background: ${Colors.surface};
+  color: ${Colors.foreground};
+  box-shadow: 0 1px 3px ${Colors.foregroundTint08};
 
   &:hover {
-    background: #fafafa;
-    box-shadow: 0 4px 16px rgba(43, 43, 43, 0.12);
+    background: ${Colors.surfaceAlt};
+    box-shadow: 0 4px 16px ${Colors.foregroundTint12};
     transform: translateY(-2px);
   }
 `;

@@ -1,25 +1,17 @@
-import heroPhoto from "../../../shared/assets/images/hero-photo.png";
+import heroPhoto from "shared/assets/images/hero-photo.png";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+import { scrollToSection } from "shared/libs/dom/scrollToSection";
+import { Colors } from "shared/styles/colors";
 import {
   AnimatedBlock,
   PrimaryButton,
   SecondaryButton,
-} from "../../../shared/ui";
+  SectionContainer,
+} from "shared/ui";
 
 export function Hero() {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
-  };
+  const { t } = useTranslation();
 
   return (
     <Section>
@@ -27,27 +19,24 @@ export function Hero() {
         <Columns>
           <LeftColumn>
             <TextBlock delay="100ms">
-              <Title>Yakov Varenik</Title>
-              <Subtitle>Fullstack Developer</Subtitle>
+              <Title>{t("hero.name")}</Title>
+              <Subtitle>{t("hero.role")}</Subtitle>
             </TextBlock>
 
-            <Description delay="300ms">
-              Building fast and reliable applications — from mobile interfaces
-              to backend architecture
-            </Description>
+            <Description delay="300ms">{t("hero.description")}</Description>
 
             <ButtonRow delay="400ms">
               <PrimaryButton
                 type="button"
                 onClick={() => scrollToSection("projects")}
               >
-                View Projects
+                {t("hero.primaryButton")}
               </PrimaryButton>
               <SecondaryButton
                 type="button"
                 onClick={() => scrollToSection("contact")}
               >
-                Contact
+                {t("hero.secondaryButton")}
               </SecondaryButton>
             </ButtonRow>
           </LeftColumn>
@@ -57,7 +46,7 @@ export function Hero() {
               <Overlay />
               <HeroImage
                 src={heroPhoto}
-                alt="Yakov Varenik"
+                alt={t("hero.imageAlt")}
                 loading="eager"
                 decoding="async"
               />
@@ -70,15 +59,12 @@ export function Hero() {
 }
 
 const Section = styled.section`
-  min-height: 100vh;
   display: flex;
   align-items: center;
-  background: #f5f1e8;
+  background: ${Colors.base};
 `;
 
-const Content = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
+const Content = styled(SectionContainer)`
   padding: 192px 32px 32px;
   width: 100%;
 `;
@@ -109,9 +95,10 @@ const TextBlock = styled(AnimatedBlock)`
 const Title = styled.h1`
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 56px;
+  font-size: clamp(28px, 10vw, 56px);
   line-height: 1.1;
   letter-spacing: -0.03em;
+  white-space: nowrap;
   margin: 0;
 `;
 
@@ -120,13 +107,13 @@ const Subtitle = styled.p`
   font-weight: 400;
   font-size: 24px;
   line-height: 1.4;
-  color: #6f6b63;
+  color: ${Colors.muted};
   margin: 0;
 `;
 
 const Description = styled(AnimatedBlock)`
   font-size: 17px;
-  color: #6f6b63;
+  color: ${Colors.muted};
   line-height: 1.75;
   max-width: 520px;
   margin: 0;
@@ -152,9 +139,9 @@ const ImageCard = styled.div`
   width: 100%;
   max-width: 420px;
   aspect-ratio: 3 / 4;
-  background: #ffffff;
+  background: ${Colors.surface};
   border-radius: 24px;
-  box-shadow: 0 8px 32px rgba(43, 43, 43, 0.08);
+  box-shadow: 0 8px 32px ${Colors.foregroundTint08};
   overflow: hidden;
 
   &:hover > div {
@@ -165,7 +152,11 @@ const ImageCard = styled.div`
 const Overlay = styled.div`
   position: absolute;
   inset: 0;
-  background: linear-gradient(225deg, rgba(200, 169, 126, 0.1), transparent);
+  background: linear-gradient(
+    225deg,
+    ${Colors.primaryTint10},
+    ${Colors.transparent}
+  );
   opacity: 0;
   transition: opacity 0.5s ease;
 `;
