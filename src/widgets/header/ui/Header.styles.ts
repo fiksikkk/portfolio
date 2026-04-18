@@ -128,6 +128,11 @@ export const MobileMenuButton = styled.button`
   }
 `;
 
+export const MobileMenuRoot = styled.div`
+  position: relative;
+  display: inline-flex;
+`;
+
 export const MobileControls = styled.div`
   display: none;
   align-items: center;
@@ -180,17 +185,24 @@ export const MobileMenuPanel = styled.div<{
   display: none;
 
   @media (max-width: 768px) {
+    position: fixed;
+    top: 60px;
+    left: auto;
+    right: 0;
+    z-index: 60;
     display: grid;
     gap: ${({ $open }) => ($open ? "14px" : "0")};
-    margin-top: ${({ $open }) => ($open ? "14px" : "0")};
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
+    width: 40vw;
+    min-width: 220px;
     padding: ${({ $open }) => ($open ? "14px 20px 12px" : "0 20px")};
-    border-top: 1px solid
+    border: 1px solid
       ${({ $open }) => ($open ? Colors.foregroundTint10 : Colors.transparent)};
+    border-right: none;
+    border-radius: 16px 0 0 16px;
     background: ${({ $forceSolidBackground }) =>
       $forceSolidBackground ? Colors.surfaceTint80 : Colors.transparent};
+    box-shadow: ${({ $open }) =>
+      $open ? `0 12px 30px ${Colors.foregroundTint10}` : "none"};
     overflow: hidden;
     max-height: ${({ $open }) => ($open ? "260px" : "0")};
     opacity: ${({ $open }) => ($open ? 1 : 0)};
@@ -202,7 +214,6 @@ export const MobileMenuPanel = styled.div<{
       opacity 0.2s ease,
       transform 0.25s ease,
       border-color 0.2s ease,
-      margin-top 0.25s ease,
       padding 0.25s ease,
       gap 0.25s ease;
   }
