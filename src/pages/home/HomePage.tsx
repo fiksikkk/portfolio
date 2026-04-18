@@ -1,8 +1,8 @@
 import styled from "styled-components";
+import { Projects } from "widgets/projects";
 import { Hero } from "./ui/Hero";
 import { About } from "./ui/About";
 import { Skills } from "./ui/Skills";
-import { Projects } from "./ui/Projects";
 import { AISection } from "./ui/AISection";
 import { Personal } from "./ui/Personal";
 import { Contact } from "./ui/Contact";

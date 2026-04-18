@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Colors } from "shared/styles/colors";
@@ -6,19 +7,22 @@ import {
   SectionContainer as Container,
   HeaderSection as SharedHeaderSection,
   SectionSubtitle as Title,
-  Tag,
+  ArrowButton,
 } from "shared/ui";
-
-interface Project {
-  name: string;
-  description: string;
-  tags: string[];
-  highlight: string;
-}
+import {
+  ProjectDetailsModal,
+  type ProjectDetails,
+} from "./ProjectDetailsModal";
+import { TagsList } from "./TagsList";
 
 export function Projects() {
   const { t } = useTranslation();
-  const projects = t("projects.items", { returnObjects: true }) as Project[];
+  const projects = t("projects.items", {
+    returnObjects: true,
+  }) as ProjectDetails[];
+  const [selectedProject, setSelectedProject] = useState<ProjectDetails | null>(
+    null,
+  );
 
   return (
     <Section id="projects">
@@ -30,7 +34,10 @@ export function Projects() {
 
         <ProjectsList>
           {projects.map((project) => (
-            <ProjectCard key={project.name}>
+            <ProjectCard
+              key={project.name}
+              onClick={() => setSelectedProject(project)}
+            >
               <GradientBackground />
               <DecorativeElement />
 
@@ -41,35 +48,24 @@ export function Projects() {
                     <ProjectName>{project.name}</ProjectName>
                   </ProjectInfo>
 
-                  <ArrowIcon>
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M14 5l7 7m0 0l-7 7m7-7H3"
-                      />
-                    </svg>
-                  </ArrowIcon>
+                  <ArrowButton reactToParentHover />
                 </ProjectHeader>
 
                 <ProjectDescription>{project.description}</ProjectDescription>
 
-                <TagsList>
-                  {project.tags.map((tag) => (
-                    <Tag key={tag}>{tag}</Tag>
-                  ))}
-                </TagsList>
+                <TagsList tags={project.tags} />
               </CardContent>
             </ProjectCard>
           ))}
         </ProjectsList>
       </Container>
+
+      {selectedProject && (
+        <ProjectDetailsModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
     </Section>
   );
 }
@@ -96,8 +92,11 @@ const ProjectsList = styled.div`
   gap: 32px;
 `;
 
-const ProjectCard = styled.div`
+const ProjectCard = styled.button`
   position: relative;
+  width: 100%;
+  border: none;
+  text-align: left;
   background: ${Colors.surface};
   border-radius: 24px;
   padding: 48px;
@@ -176,42 +175,10 @@ const ProjectName = styled.h3`
   margin: 0 0 12px 0;
 `;
 
-const ArrowIcon = styled.div`
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: ${Colors.base};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.5s ease;
-
-  svg {
-    width: 20px;
-    height: 20px;
-    color: ${Colors.primary};
-    transition: color 0.5s ease;
-  }
-
-  ${ProjectCard}:hover & {
-    background: ${Colors.primary};
-
-    svg {
-      color: ${Colors.surface};
-    }
-  }
-`;
-
 const ProjectDescription = styled.p`
   font-size: 17px;
   color: ${Colors.muted};
   line-height: 1.75;
   margin: 0 0 32px 0;
   max-width: 800px;
-`;
-
-const TagsList = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
 `;

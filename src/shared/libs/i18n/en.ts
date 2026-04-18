@@ -60,11 +60,29 @@ export const enTranslation = {
     title: "Featured Projects",
     description:
       "Selected work showcasing expertise in fullstack development, mobile architecture, and performance optimization.",
+    modal: {
+      closeLabel: "Close modal",
+      placeholder: "Detailed project description will be added soon. This section will include goals, architecture decisions, stack, and key outcomes.",
+    },
     items: [
       {
         name: "Muffins",
         description:
           "Developed and maintained a B2B medical benefits platform across web, mobile, and backend. Refactored legacy code and wrote tests (Jest, Detox) to improve performance and stability. Used AI tools and prompt engineering to streamline development and ensure reliable results.",
+        details: [
+          "Development and maintenance of a B2B platform for managing medical benefits",
+          "",
+          "- Developed features for web, mobile applications, and backend",
+          "- Refactored legacy code, improving performance and maintainability",
+          "- Wrote unit and end-to-end tests (Jest, Detox), increasing release stability",
+          "- Used AI tools for code generation, refactoring, and testing, establishing an LLM -> validation -> refinement pipeline",
+          "- Applied prompt engineering techniques (structured prompts, task decomposition) to improve output quality and accuracy",
+          "- Validated AI-generated outputs (logic, edge cases, performance), reducing risks of errors and hallucinations",
+          "- Participated in code reviews, planning, and task decomposition",
+          "- Collaborated with designers and stakeholders",
+          "",
+          "<strong>Stack</strong>: TypeScript, React, React Native, Node.js, Effector, Redux, GraphQL",
+        ].join("\n"),
         tags: ["React", "Node.js", "GraphQL", "AI Integration", "PostgreSQL"],
         highlight: "B2B Platform",
       },
@@ -72,6 +90,19 @@ export const enTranslation = {
         name: "JetRuby Agency",
         description:
           "Built a fitness and health mobile app from scratch using React Native. Implemented UI from designs, integrated REST APIs, and managed state and navigation. Optimized performance and stability, and contributed to code reviews and planning.",
+        details: [
+          "Mobile application for fitness and health",
+          "",
+          "- Developed the application from scratch using React Native",
+          "- Implemented UI based on design mockups, supported light/dark themes",
+          "- Integrated REST API (posts, comments, profiles, notifications)",
+          "- Managed application state and data caching",
+          "- Set up navigation and contributed to architecture design",
+          "- Optimized application performance and stability",
+          "- Participated in code reviews and task planning",
+          "",
+          "<strong>Stack</strong>: React Native, TypeScript, Redux, Context API, REST API, Git, CI/CD",
+        ].join("\n"),
         tags: ["React Native", "TypeScript", "Redux", "Detox", "Performance"],
         highlight: "Mobile App",
       },

@@ -1,6 +1,8 @@
 export { default as TelegramIcon } from "./telegram.svg?react";
 export { default as EmailIcon } from "./email.svg?react";
 export { default as GitHubIcon } from "./github.svg?react";
+export { default as ArrowRightIcon } from "./arrow-right.svg?react";
+export { default as CloseIcon } from "./close.svg?react";
 export { default as SmartHomeIcon } from "./smart-home.svg?react";
 export { default as ModelingIcon } from "./modeling.svg?react";
 export { default as WoodworkingIcon } from "./woodworking.svg?react";
