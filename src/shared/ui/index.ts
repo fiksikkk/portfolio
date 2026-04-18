@@ -6,4 +6,5 @@ export * from "./buttons/Button";
 export * from "./Animated";
 export * from "./Card";
 export * from "./SectionWrapper";
+export * from "./PillBadge";
 export * from "./icons";

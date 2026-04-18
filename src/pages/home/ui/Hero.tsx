@@ -1,25 +1,17 @@
 import heroPhoto from "shared/assets/images/hero-photo.png";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
+import { scrollToSection } from "shared/libs/dom/scrollToSection";
 import { Colors } from "shared/styles/colors";
-import { AnimatedBlock, PrimaryButton, SecondaryButton } from "shared/ui";
+import {
+  AnimatedBlock,
+  PrimaryButton,
+  SecondaryButton,
+  SectionContainer,
+} from "shared/ui";
 
 export function Hero() {
   const { t } = useTranslation();
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
-  };
 
   return (
     <Section>
@@ -72,9 +64,7 @@ const Section = styled.section`
   background: ${Colors.base};
 `;
 
-const Content = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
+const Content = styled(SectionContainer)`
   padding: 192px 32px 32px;
   width: 100%;
 `;

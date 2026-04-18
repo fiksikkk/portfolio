@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
+import { scrollToSection } from "shared/libs/dom/scrollToSection";
 import { Colors } from "shared/styles/colors";
 import { SUPPORTED_LANGUAGES } from "shared/libs/i18n";
+import { SectionContainer } from "shared/ui";
 
 interface HeaderProps {
   backgroundColor: string;
@@ -9,20 +11,6 @@ interface HeaderProps {
 
 export function Header({ backgroundColor }: HeaderProps) {
   const { t, i18n } = useTranslation();
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
-  };
 
   return (
     <HeaderWrapper backgroundColor={backgroundColor}>
@@ -98,9 +86,7 @@ const HeaderWrapper = styled.header<{ backgroundColor: string }>`
       : `0 1px 0 ${Colors.foregroundTint06}`};
 `;
 
-const HeaderContainer = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
+const HeaderContainer = styled(SectionContainer)`
   padding: 24px 32px;
 `;
 

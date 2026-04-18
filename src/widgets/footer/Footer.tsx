@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Colors } from "shared/styles/colors";
+import { SectionContainer } from "shared/ui";
 
 export function Footer() {
   const { t } = useTranslation();
@@ -31,10 +32,7 @@ const FooterContainer = styled.footer`
   border-top: 1px solid ${Colors.foregroundTint06};
 `;
 
-const Container = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-`;
+const Container = styled(SectionContainer)``;
 
 const Content = styled.div`
   display: flex;

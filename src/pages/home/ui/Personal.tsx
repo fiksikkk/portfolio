@@ -3,11 +3,12 @@ import { useTranslation } from "react-i18next";
 import { Colors } from "shared/styles/colors";
 import {
   SectionWrapper,
-  SectionContent as Content,
-  SectionSubtitle as Subtitle,
-  SectionText as Description,
+  SectionContent,
+  SectionSubtitle,
+  SectionText,
   CardBase,
-  IconContainer as IconContainerBase,
+  Grid,
+  IconContainer,
   SmartHomeIcon,
   ModelingIcon,
   WoodworkingIcon,
@@ -30,10 +31,10 @@ export function Personal() {
 
   return (
     <SectionWrapper background="surface">
-      <Content>
-        <Subtitle>{t("personal.title")}</Subtitle>
+      <SectionContent>
+        <SectionSubtitle>{t("personal.title")}</SectionSubtitle>
 
-        <Description>{t("personal.description")}</Description>
+        <SectionText>{t("personal.description")}</SectionText>
 
         <Grid>
           {interests.map((interest, index) => (
@@ -41,7 +42,7 @@ export function Personal() {
               key={interest.title}
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <IconContainer>{icons[index]}</IconContainer>
+              <PersonalIconContainer>{icons[index]}</PersonalIconContainer>
 
               <Title>{interest.title}</Title>
 
@@ -49,20 +50,10 @@ export function Personal() {
             </Card>
           ))}
         </Grid>
-      </Content>
+      </SectionContent>
     </SectionWrapper>
   );
 }
-
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-`;
 
 const Card = styled(CardBase)`
   &:hover {
@@ -70,23 +61,7 @@ const Card = styled(CardBase)`
   }
 `;
 
-const IconContainer = styled(IconContainerBase)`
-  width: 3rem;
-  height: 3rem;
-  border-radius: 14px;
-  background-color: ${Colors.surface};
-  color: ${Colors.primary};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
-  transition: transform 0.5s;
-
-  svg {
-    width: 24px;
-    height: 24px;
-  }
-
+const PersonalIconContainer = styled(IconContainer)`
   ${Card}:hover & {
     transform: scale(1.1);
   }

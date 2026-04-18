@@ -8,6 +8,7 @@ import {
   HeaderSection as SharedHeaderSection,
   SectionSubtitle as Title,
   ArrowButton,
+  PillBadge,
 } from "shared/ui";
 import {
   ProjectDetailsModal,
@@ -157,14 +158,7 @@ const ProjectHeader = styled.div`
 
 const ProjectInfo = styled.div``;
 
-const HighlightBadge = styled.div`
-  display: inline-block;
-  padding: 6px 16px;
-  background: ${Colors.primaryTint10};
-  color: ${Colors.primary};
-  border-radius: 9999px;
-  font-size: 13px;
-  font-weight: 600;
+const HighlightBadge = styled(PillBadge)`
   margin-bottom: 16px;
 `;
 

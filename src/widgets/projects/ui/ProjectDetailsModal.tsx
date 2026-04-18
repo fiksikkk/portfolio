@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Colors } from "shared/styles/colors";
 import { useModal } from "shared/libs/hooks/useModal";
-import { CloseButton } from "shared/ui";
+import { CloseButton, PillBadge } from "shared/ui";
 
 export interface ProjectDetails {
   name: string;
@@ -79,14 +79,7 @@ const ModalCloseButton = styled(CloseButton)`
   right: 16px;
 `;
 
-const ModalHighlight = styled.div`
-  display: inline-block;
-  padding: 6px 16px;
-  background: ${Colors.primaryTint10};
-  color: ${Colors.primary};
-  border-radius: 9999px;
-  font-size: 13px;
-  font-weight: 600;
+const ModalHighlight = styled(PillBadge)`
   margin-bottom: 20px;
 `;
 
