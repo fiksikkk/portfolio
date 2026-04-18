@@ -3,6 +3,7 @@ import {
   MobileMenuButton,
   MobileMenuIcon,
   MobileMenuPanel,
+  MobileMenuRoot,
 } from "./Header.styles";
 
 interface MobileMenuProps {
@@ -23,7 +24,7 @@ export function MobileMenu({
   closeLabel,
 }: MobileMenuProps) {
   return (
-    <>
+    <MobileMenuRoot>
       <MobileMenuButton
         type="button"
         aria-expanded={isOpen}
@@ -40,6 +41,6 @@ export function MobileMenu({
       <MobileMenuPanel $open={isOpen} $forceSolidBackground={isOpen}>
         <NavLinks mobile onNavigate={onNavigate} getLabel={getLabel} />
       </MobileMenuPanel>
-    </>
+    </MobileMenuRoot>
   );
 }
